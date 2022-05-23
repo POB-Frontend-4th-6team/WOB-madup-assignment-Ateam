@@ -1,4 +1,4 @@
-export interface adCardInfo {
+export interface advertisementCardType {
   id?: number
   adType?: string
   title?: string
@@ -11,4 +11,9 @@ export interface adCardInfo {
     convValue?: number
     roas?: number
   }
+}
+
+interface responseDataType {
+  count: number
+  ads: adCardInfo[]
 }
