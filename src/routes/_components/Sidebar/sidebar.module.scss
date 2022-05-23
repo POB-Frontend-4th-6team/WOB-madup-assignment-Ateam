@@ -1,46 +1,75 @@
 @use '/src/styles/constants/colors';
 @use '/src/styles/mixins/flexbox';
-@use '/src/styles/mixins/position';
+@use '/src/styles/mixins/responsive';
 
 .container {
   position: fixed;
   top: 0;
-  left: 0;
+  left: -330px;
   z-index: 10;
-  @include flexbox.flexbox(between, stretch);
   flex-direction: column;
-  height: 100%;
   width: 320px;
+  height: 100%;
   padding: 60px 40px;
-  box-shadow: colors.$BOX_SHADOW 2px 0px 8px 0px;
   overflow-y: scroll;
+  background: colors.$WHITE;
+  box-shadow: colors.$BOX_SHADOW 2px 0 8px 0;
   transition: 0.3s;
-  
-  .top {
+  @include flexbox.flexbox(between, stretch);
 
-    
+  @include responsive.after(SD) {
+    left: 0;
+  }
+
+  &.show {
+    left: 0;
+  }
+
+  .btn {
+    position: absolute;
+    top: 20px;
+    right: 40px;
+    z-index: 10;
+    display: none;
+    padding: 10px;
+    border-radius: 50%;
+
+    svg {
+      fill: colors.$SUB_TEXT;
+    }
+
+    &:hover {
+      background: rgba(colors.$SUB_TEXT, 0.1);
+    }
+
+    &.show {
+      @include flexbox.flexbox(center, center);
+    }
+  }
+
+  .top {
     .box {
       margin-bottom: 50px;
     }
-    
+
     .subText {
+      margin-bottom: 20px;
       font-size: 12px;
       color: colors.$SUB_TEXT;
-      margin-bottom: 20px;
       letter-spacing: 0.3px;
     }
-    
+
     h2 {
       padding-bottom: 50px;
-      border-bottom: 1px solid colors.$SUB_GRAY;
       margin-bottom: 50px;
+      border-bottom: 1px solid colors.$SUB_GRAY;
     }
 
     .dropdown {
-      border-radius: 10px;
-      border: 1px solid colors.$DROP_BOX;
       height: 60px;
       padding: 20px;
+      border: 1px solid colors.$DROP_BOX;
+      border-radius: 10px;
     }
 
     nav {
@@ -49,22 +78,22 @@
           a {
             @include flexbox.flexbox(start, center);
             padding: 20px;
-            color: colors.$MAIN_TEXT_COLOR;
-            border-radius: 10px;
             font-weight: 500;
+            color: colors.$MAIN_TEXT_COLOR;
             letter-spacing: 0.4px;
-  
+            border-radius: 10px;
+
             svg {
               margin-right: 10px;
             }
-  
+
             &.isActive {
-              background: colors.$NAV_ACTIVE_BG;
               color: colors.$NAV_ACTIVE;
-              
-              svg path{
-                fill: colors.$NAV_ACTIVE;
-              }
+              background: colors.$NAV_ACTIVE_BG;
+            }
+
+            &.isActive svg path {
+              fill: colors.$NAV_ACTIVE;
             }
           }
         }
@@ -73,38 +102,36 @@
   }
 
   .bottom {
-
     .guideBox {
       @include flexbox.flexbox(start, center);
-      background: colors.$GUIDE_BOX;
-      border-radius: 10px;
       padding: 25px 20px;
       margin-bottom: 30px;
       cursor: pointer;
+      background: colors.$GUIDE_BOX;
+      border-radius: 10px;
 
       p {
-        color: colors.$MAIN_TEXT_COLOR;
         margin-left: 10px;
-        
+        color: colors.$MAIN_TEXT_COLOR;
 
         span {
           display: inline-block;
           margin-top: 10px;
           font-size: 12px;
-          color: colors.$SUB_TEXT; 
+          color: colors.$SUB_TEXT;
         }
       }
     }
 
     .serviceGuide {
       font-size: 12px;
-      color: colors.$SUB_TEXT;
       font-weight: 300;
+      color: colors.$SUB_TEXT;
 
       span {
         display: inline-block;
-        text-decoration: underline;
         margin-top: 10px;
+        text-decoration: underline;
         cursor: pointer;
       }
     }

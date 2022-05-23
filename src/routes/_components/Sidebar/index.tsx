@@ -1,12 +1,39 @@
 import cx from 'classnames'
 import { NavLink } from 'react-router-dom'
 
-import { DashBoard, AdManage, Logo, GuideIcon } from 'assets/svgs/madup'
+import { useAppSelector, useEffect, useAppDispatch, useState, useMount } from 'hooks'
+import { getSidebarDrawer, setSidebar } from 'states/sidebar'
+import { DashBoard, AdManage, Logo, GuideIcon, Close } from 'assets/svgs/madup'
 import styles from './sidebar.module.scss'
 
 const Sidebar = () => {
+  const [closeBtn, setCloseBtn] = useState<Boolean>(false)
+  const sidebarDrawer = useAppSelector(getSidebarDrawer)
+  const dispatch = useAppDispatch()
+
+  const handleClose = () => dispatch(setSidebar(!sidebarDrawer))
+
+  const handleResize = () => {
+    const target = window.innerWidth
+    target < 768 ? setCloseBtn(true) : setCloseBtn(false)
+  }
+
+  const setBtn = () => (window.innerWidth < 768 ? setCloseBtn(true) : setCloseBtn(false))
+
+  useMount(() => setBtn())
+
+  useEffect(() => {
+    window.addEventListener('resize', handleResize)
+    return () => {
+      window.removeEventListener('resize', handleResize)
+    }
+  })
+
   return (
-    <aside className={styles.container}>
+    <aside className={cx(styles.container, { [styles.show]: sidebarDrawer })}>
+      <button type='button' className={cx(styles.btn, { [styles.show]: closeBtn })} onClick={handleClose}>
+        <Close />
+      </button>
       <div className={styles.top}>
         <h2>
           <Logo />
@@ -20,13 +47,13 @@ const Sidebar = () => {
           <ul>
             <li>
               <NavLink to='/' className={({ isActive }) => cx({ [styles.isActive]: isActive })}>
-                <DashBoard />
+                <DashBoard className={styles.icon} />
                 <span>대시보드</span>
               </NavLink>
             </li>
             <li>
               <NavLink to='adManage' className={({ isActive }) => cx({ [styles.isActive]: isActive })}>
-                <AdManage />
+                <AdManage className={styles.icon} />
                 <span>광고관리</span>
               </NavLink>
             </li>
