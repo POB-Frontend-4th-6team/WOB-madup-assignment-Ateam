@@ -1,6 +1,6 @@
 import styles from './card.module.scss'
 
-import { adCardInfo } from 'services/ad'
+import { adCardInfo } from 'types/ad.d'
 
 const index = (props: adCardInfo) => {
   return (
