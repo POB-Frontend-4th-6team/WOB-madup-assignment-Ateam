@@ -1,5 +1,133 @@
+@use '/src/styles/constants/colors';
+@use '/src/styles/mixins/flexbox';
+@use '/src/styles/mixins/responsive';
+
 .container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  position: fixed;
+  top: 0;
+  left: -290px;
+  z-index: 10;
+  flex-direction: column;
+  width: 280px;
+  height: 100%;
+  padding: 50px 30px;
+  overflow-y: scroll;
+  background: colors.$WHITE;
+  box-shadow: colors.$NAV_SHADOW 2px 0 8px 0;
+  transition: 0.3s;
+  @include flexbox.flexbox(between, stretch);
+
+  .btn {
+    position: absolute;
+    top: 20px;
+    right: 40px;
+    z-index: 10;
+    padding: 10px;
+    border-radius: 50%;
+    @include flexbox.flexbox(center, center);
+
+    svg {
+      fill: colors.$SUB_TEXT;
+    }
+
+    &:hover {
+      background: rgba(colors.$SUB_TEXT, 0.1);
+    }
+  }
+
+  @include responsive.after(SD) {
+    left: 0;
+
+    .btn {
+      display: none;
+    }
+  }
+
+  &.show {
+    left: 0;
+  }
+
+  .top {
+    .box {
+      margin-bottom: 50px;
+    }
+
+    .subText {
+      margin-bottom: 20px;
+      font-size: 12px;
+      color: colors.$SUB_TEXT;
+      letter-spacing: 0.3px;
+    }
+
+    h2 {
+      padding-bottom: 50px;
+      margin-bottom: 50px;
+      border-bottom: 1px solid colors.$SUB_GRAY;
+    }
+
+    .dropdown {
+      height: 50px;
+      padding: 15px 20px;
+      border: 1px solid colors.$BOX_COLOR;
+      border-radius: 10px;
+    }
+
+    nav > ul > li > a {
+      @include flexbox.flexbox(start, center);
+      padding: 15px 20px;
+      font-weight: 500;
+      color: colors.$MAIN_TEXT_COLOR;
+      letter-spacing: 0.4px;
+      border-radius: 10px;
+
+      svg {
+        margin-right: 10px;
+      }
+
+      &.isActive {
+        color: colors.$ACTIVE_COLOR;
+        background: colors.$NAV_ACTIVE_BG;
+      }
+
+      &.isActive svg path {
+        fill: colors.$ACTIVE_COLOR;
+      }
+    }
+  }
+
+  .bottom {
+    .guideBox {
+      @include flexbox.flexbox(start, center);
+      padding: 20px;
+      margin-bottom: 30px;
+      cursor: pointer;
+      background: colors.$GUIDE_BOX;
+      border-radius: 10px;
+
+      p {
+        margin-left: 10px;
+        color: colors.$MAIN_TEXT_COLOR;
+
+        span {
+          display: inline-block;
+          margin-top: 10px;
+          font-size: 12px;
+          color: colors.$SUB_TEXT;
+        }
+      }
+    }
+
+    .serviceGuide {
+      font-size: 12px;
+      font-weight: 300;
+      color: colors.$SUB_TEXT;
+
+      span {
+        display: inline-block;
+        margin-top: 10px;
+        text-decoration: underline;
+        cursor: pointer;
+      }
+    }
+  }
 }

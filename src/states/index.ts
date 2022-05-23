@@ -1,7 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit'
+import sidebar from './sidebar'
 
 export const store = configureStore({
-  reducer: {},
+  reducer: {
+    sidebar,
+  },
   devTools: process.env.NODE_ENV !== 'production',
   middleware: (getDefaultMiddleware) => getDefaultMiddleware({ serializableCheck: false }),
 })
