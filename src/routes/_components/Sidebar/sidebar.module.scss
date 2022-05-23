@@ -72,31 +72,26 @@
       border-radius: 10px;
     }
 
-    nav {
-      ul {
-        li {
-          a {
-            @include flexbox.flexbox(start, center);
-            padding: 20px;
-            font-weight: 500;
-            color: colors.$MAIN_TEXT_COLOR;
-            letter-spacing: 0.4px;
-            border-radius: 10px;
 
-            svg {
-              margin-right: 10px;
-            }
+    nav > ul > li a {
+      @include flexbox.flexbox(start, center);
+      padding: 20px;
+      font-weight: 500;
+      color: colors.$MAIN_TEXT_COLOR;
+      letter-spacing: 0.4px;
+      border-radius: 10px;
 
-            &.isActive {
-              color: colors.$NAV_ACTIVE;
-              background: colors.$NAV_ACTIVE_BG;
-            }
+      svg {
+        margin-right: 10px;
+      }
 
-            &.isActive svg path {
-              fill: colors.$NAV_ACTIVE;
-            }
-          }
-        }
+      &.isActive {
+        color: colors.$NAV_ACTIVE;
+        background: colors.$NAV_ACTIVE_BG;
+      }
+
+      &.isActive svg path {
+        fill: colors.$NAV_ACTIVE;
       }
     }
   }
