@@ -1,5 +1,52 @@
+@use '/src/styles/mixins/flexbox';
+
 .container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  $WHITE: #ffffff;
+  $DROPDOWN_BORDER: #d1d8dc;
+  $DROPDOWN_FONT: #3a474e;
+  width: 123px;
+  height: 40px;
+
+  summary {
+    @include flexbox.flexbox(between, center);
+    width: 100%;
+    height: 100%;
+    color: $DROPDOWN_FONT;
+    list-style: none;
+    cursor: pointer;
+    background-color: $WHITE;
+    border: 1px solid #d1d8dc;
+    border-radius: 10px;
+
+    p {
+      margin-left: 20px;
+      overflow: hidden;
+      font-size: 14px;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      user-select: none;
+    }
+
+    .dropdownMarkerBox {
+      @include flexbox.flexbox(center, center);
+      height: 100%;
+      margin: 0 16px 0 5px;
+
+      path {
+        width: 12px;
+        height: 8px;
+        fill: $DROPDOWN_FONT;
+      }
+    }
+  }
+}
+
+.container.big {
+  width: 240px;
+  height: 60px;
+
+  summary > p {
+    font-size: 16px;
+    font-weight: bold;
+  }
 }
