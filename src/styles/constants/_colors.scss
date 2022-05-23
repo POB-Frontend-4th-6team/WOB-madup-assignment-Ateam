@@ -23,12 +23,22 @@ $BIG_TITLE: #1f315b;
 $TASKS_TITLE: #8f99bf;
 $TASK_ITEM_TITLE: #4f566f;
 
+// 공통
 $MAIN_TEXT_COLOR: #3a474e;
 $SUB_TEXT: #94a2ad;
 $MAIN_BG: #f6f7f8;
+$ACTIVE_COLOR: #586cf5;
+$SUB_GRAY: #edeff1; // border-bottom or dashboard box border or nav active bg-color
+$BOX_COLOR: #d1d8dc; // dropdown border or adManagement card border & modify btn border
+
+// 사이드바
 $NAV_ACTIVE_BG: #edeff1;
-$NAV_ACTIVE: #586cf5;
-$SUB_GRAY: #edeff1;
+$NAV_SHADOW: rgba(99, 99, 99, 20%);
 $GUIDE_BOX: #e5f4fd;
-$BOX_SHADOW: rgba(99, 99, 99, 20%);
-$DROP_BOX: #d1d8dc;
+
+// 대시보드
+$ARROW_DOWN: #85da47;
+$ARROW_UP: #ea3a4b;
+$FACEBOOK: #4fadf7;
+$NAVER: #85da47;
+$GOOGLE: #ac8af8;

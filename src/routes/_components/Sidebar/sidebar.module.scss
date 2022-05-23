@@ -13,7 +13,7 @@
   padding: 60px 40px;
   overflow-y: scroll;
   background: colors.$WHITE;
-  box-shadow: colors.$BOX_SHADOW 2px 0 8px 0;
+  box-shadow: colors.$NAV_SHADOW 2px 0 8px 0;
   transition: 0.3s;
   @include flexbox.flexbox(between, stretch);
 
@@ -68,7 +68,7 @@
     .dropdown {
       height: 60px;
       padding: 20px;
-      border: 1px solid colors.$DROP_BOX;
+      border: 1px solid colors.$BOX_COLOR;
       border-radius: 10px;
     }
 
@@ -85,12 +85,12 @@
       }
 
       &.isActive {
-        color: colors.$NAV_ACTIVE;
+        color: colors.$ACTIVE_COLOR;
         background: colors.$NAV_ACTIVE_BG;
       }
 
       &.isActive svg path {
-        fill: colors.$NAV_ACTIVE;
+        fill: colors.$ACTIVE_COLOR;
       }
     }
   }
