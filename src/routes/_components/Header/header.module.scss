@@ -1,16 +1,24 @@
 @use '/src/styles/constants/colors';
 @use '/src/styles/mixins/flexbox';
+@use '/src/styles/mixins/responsive';
 
 header {
   position: fixed;
-  left: 320px;
   top: 0;
+  left: 0;
   z-index: 5;
+  width: 100%;
   height: 80px;
   padding: 20px;
-  width: calc( 100vw - 320px);
   background: colors.$MAIN_BG;
   border-bottom: 1px solid colors.$SUB_GRAY;
+  @include flexbox.flexbox(between, center);
+
+  @include responsive.after(SD) {
+    left: 320px;
+    width: calc(100vw - 320px);
+    @include flexbox.flexbox(end, center);
+  }
 
   ul {
     @include flexbox.flexbox(end, center);
@@ -25,23 +33,30 @@ header {
 
       &:last-child {
         @include flexbox.flexbox(start,center);
-        
+
         span {
           margin-left: 10px;
         }
       }
-      
+
       &:nth-child(1)::after {
-        content: '';
         position: absolute;
         top: -3px;
         right: -2px;
         width: 5px;
         height: 5px;
+        content: '';
         background: colors.$RED;
         border-radius: 50%;
       }
+    }
+  }
 
+  .hamburger {
+    display: block;
+
+    @include responsive.after(SD) {
+      display: none;
     }
   }
 }
