@@ -27,6 +27,7 @@
     border-radius: 10px;
 
     li {
+      @include flexbox.flexbox(start, center);
       padding: 12px 0;
       cursor: pointer;
 
@@ -37,24 +38,26 @@
   }
 
   button {
-    @include flexbox.flexbox(between, center);
+    @include flexbox.flexbox(start, center);
     z-index: levels.$DROPDOWN_BUTTON;
     width: 100%;
     height: 100%;
-    padding: 0 10px 0 20px;
+    padding: 0 16px 0 20px;
     color: colors.$DROPDOWN_FONT;
     background-color: colors.$DROPDOWN_BACKGROUND;
     border: 1px solid #d1d8dc;
     border-radius: 10px;
 
     p {
+      flex-grow: 1;
       overflow: hidden;
       font-size: 14px;
+      text-align: left;
       text-overflow: ellipsis;
       white-space: nowrap;
     }
 
-    .dropdownMarkerBox {
+    .dropdownIconBox {
       @include flexbox.flexbox(center, center);
       height: 100%;
 
@@ -64,6 +67,17 @@
         fill: colors.$DROPDOWN_FONT;
       }
     }
+  }
+
+  .marker {
+    width: 10px;
+    height: 10px;
+    margin-right: 10px;
+    border-radius: 50%;
+  }
+
+  button.unbordered {
+    border: none;
   }
 }
 
