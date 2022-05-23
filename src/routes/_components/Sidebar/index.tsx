@@ -1,37 +1,20 @@
 import cx from 'classnames'
 import { NavLink } from 'react-router-dom'
 
-import { useAppSelector, useEffect, useAppDispatch, useState, useMount } from 'hooks'
+import { useAppSelector, useAppDispatch } from 'hooks'
 import { getSidebarDrawer, setSidebar } from 'states/sidebar'
 import { DashBoard, AdManage, Logo, GuideIcon, Close } from 'assets/svgs/madup'
 import styles from './sidebar.module.scss'
 
 const Sidebar = () => {
-  const [closeBtn, setCloseBtn] = useState<Boolean>(false)
   const sidebarDrawer = useAppSelector(getSidebarDrawer)
   const dispatch = useAppDispatch()
 
   const handleClose = () => dispatch(setSidebar(!sidebarDrawer))
 
-  const handleResize = () => {
-    const target = window.innerWidth
-    target < 768 ? setCloseBtn(true) : setCloseBtn(false)
-  }
-
-  const setBtn = () => (window.innerWidth < 768 ? setCloseBtn(true) : setCloseBtn(false))
-
-  useMount(() => setBtn())
-
-  useEffect(() => {
-    window.addEventListener('resize', handleResize)
-    return () => {
-      window.removeEventListener('resize', handleResize)
-    }
-  })
-
   return (
     <aside className={cx(styles.container, { [styles.show]: sidebarDrawer })}>
-      <button type='button' className={cx(styles.btn, { [styles.show]: closeBtn })} onClick={handleClose}>
+      <button type='button' className={styles.btn} onClick={handleClose}>
         <Close />
       </button>
       <div className={styles.top}>

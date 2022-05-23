@@ -17,22 +17,14 @@
   transition: 0.3s;
   @include flexbox.flexbox(between, stretch);
 
-  @include responsive.after(SD) {
-    left: 0;
-  }
-
-  &.show {
-    left: 0;
-  }
-
   .btn {
     position: absolute;
     top: 20px;
     right: 40px;
     z-index: 10;
-    display: none;
     padding: 10px;
     border-radius: 50%;
+    @include flexbox.flexbox(center, center);
 
     svg {
       fill: colors.$SUB_TEXT;
@@ -41,10 +33,18 @@
     &:hover {
       background: rgba(colors.$SUB_TEXT, 0.1);
     }
+  }
 
-    &.show {
-      @include flexbox.flexbox(center, center);
+  @include responsive.after(SD) {
+    left: 0;
+
+    .btn {
+      display: none;
     }
+  }
+
+  &.show {
+    left: 0;
   }
 
   .top {
