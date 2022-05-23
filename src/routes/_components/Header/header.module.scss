@@ -1,5 +1,47 @@
-.container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+@use '/src/styles/constants/colors';
+@use '/src/styles/mixins/flexbox';
+
+header {
+  position: fixed;
+  left: 320px;
+  top: 0;
+  z-index: 5;
+  height: 80px;
+  padding: 20px;
+  width: calc( 100vw - 320px);
+  background: colors.$MAIN_BG;
+  border-bottom: 1px solid colors.$SUB_GRAY;
+
+  ul {
+    @include flexbox.flexbox(end, center);
+
+    li {
+      position: relative;
+      cursor: pointer;
+
+      + li {
+        margin-left: 20px;
+      }
+
+      &:last-child {
+        @include flexbox.flexbox(start,center);
+        
+        span {
+          margin-left: 10px;
+        }
+      }
+      
+      &:nth-child(1)::after {
+        content: '';
+        position: absolute;
+        top: -3px;
+        right: -2px;
+        width: 5px;
+        height: 5px;
+        background: colors.$RED;
+        border-radius: 50%;
+      }
+
+    }
+  }
 }
