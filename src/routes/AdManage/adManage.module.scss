@@ -1,5 +1,16 @@
+@use '/src/styles/constants/colors';
+
 .container {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.makeAdButton {
+  width: 100px;
+  height: 40px;
+  font-weight: 500;
+  color: colors.$WHITE;
+  background: #586cf5;
+  border-radius: 10px;
 }
