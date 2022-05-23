@@ -72,8 +72,7 @@
       border-radius: 10px;
     }
 
-
-    nav > ul > li a {
+    nav > ul > li > a {
       @include flexbox.flexbox(start, center);
       padding: 20px;
       font-weight: 500;
