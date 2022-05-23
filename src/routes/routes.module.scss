@@ -2,7 +2,6 @@
 @use '/src/styles/mixins/flexbox';
 
 .app {
-  @include flexbox.flexbox(center, center);
   height: 100vh;
   margin-left: 320px;
   background: colors.$MAIN_BG;
