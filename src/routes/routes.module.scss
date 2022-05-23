@@ -1,7 +1,9 @@
 @use '/src/styles/constants/colors';
+@use '/src/styles/mixins/flexbox';
 
 .app {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  @include flexbox.flexbox(center, center);
+  height: 100vh;
+  margin-left: 320px;
+  background: colors.$MAIN_BG;
 }
