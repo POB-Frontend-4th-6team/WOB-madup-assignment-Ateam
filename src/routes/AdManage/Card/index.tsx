@@ -1,6 +1,8 @@
 import styles from './card.module.scss'
 
-const index = () => {
+import { adCardInfo } from 'services/ad'
+
+const index = (props: adCardInfo) => {
   return (
     <section className={styles.cardContainer}>
       <h1 className={styles.cardHeader}>웹광고_20210601123030</h1>
