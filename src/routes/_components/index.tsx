@@ -9,6 +9,7 @@ const Components = () => {
   return (
     <div>
       <Dropdown size='normal' items={DROPDOWN_ITEMS} onItemChange={handleItemChange} />
+      <Dropdown size='big' items={DROPDOWN_ITEMS} onItemChange={handleItemChange} />
     </div>
   )
 }

@@ -9,9 +9,9 @@ const App = () => {
   return (
     <div className={styles.app}>
       <Routes>
-        <Route path='/' element={<Components />} />
         <Route path='/' element={<Dashboard />} />
         <Route path='adManage' element={<AdManage />} />
+        <Route path='components' element={<Components />} />
         <Route path='*' element={<div>404</div>} />
       </Routes>
     </div>
