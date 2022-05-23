@@ -10,7 +10,7 @@ const INITAL_STATE: ISidebarState = {
 }
 
 export const sidebarDrawerSlice = createSlice({
-  name: 'dieaseSearch',
+  name: 'sidebarDrawer',
   initialState: INITAL_STATE,
   reducers: {
     setSidebar: (state: ISidebarState, action: PayloadAction<boolean>) => {
