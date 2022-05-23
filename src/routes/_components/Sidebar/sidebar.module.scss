@@ -6,32 +6,44 @@
   position: fixed;
   top: 0;
   left: 0;
+  z-index: 10;
   @include flexbox.flexbox(between, stretch);
   flex-direction: column;
   height: 100%;
   width: 320px;
   padding: 60px 40px;
   box-shadow: colors.$BOX_SHADOW 2px 0px 8px 0px;
+  overflow-y: scroll;
   transition: 0.3s;
   
   .top {
 
+    
+    .box {
+      margin-bottom: 50px;
+    }
+    
+    .subText {
+      font-size: 12px;
+      color: colors.$SUB_TEXT;
+      margin-bottom: 20px;
+      letter-spacing: 0.3px;
+    }
+    
     h2 {
       padding-bottom: 50px;
       border-bottom: 1px solid colors.$SUB_GRAY;
       margin-bottom: 50px;
     }
-  
-    nav {
-      margin-bottom: 30px;
 
-      .subText {
-        font-size: 12px;
-        color: colors.$SUB_TEXT;
-        margin-bottom: 20px;
-        letter-spacing: 0.3px;
-      }
-      
+    .dropdown {
+      border-radius: 10px;
+      border: 1px solid colors.$DROP_BOX;
+      height: 60px;
+      padding: 20px;
+    }
+
+    nav {
       ul {
         li {
           a {

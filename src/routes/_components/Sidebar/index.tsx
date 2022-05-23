@@ -2,7 +2,6 @@ import cx from 'classnames'
 import { NavLink } from 'react-router-dom'
 
 import { DashBoard, AdManage, Logo, GuideIcon } from 'assets/svgs/madup'
-
 import styles from './sidebar.module.scss'
 
 const Sidebar = () => {
@@ -12,8 +11,11 @@ const Sidebar = () => {
         <h2>
           <Logo />
         </h2>
-        {/* logo */}
-        <nav className={styles.gnb}>
+        <div className={styles.box}>
+          <p className={styles.subText}>서비스</p>
+          <div className={styles.dropdown} />
+        </div>
+        <nav className={cx(styles.gnb, styles.box)}>
           <p className={styles.subText}>광고 센터</p>
           <ul>
             <li>
@@ -30,9 +32,7 @@ const Sidebar = () => {
             </li>
           </ul>
         </nav>
-        {/* nav */}
       </div>
-
       <div className={styles.bottom}>
         <div className={styles.guideBox}>
           <GuideIcon />
