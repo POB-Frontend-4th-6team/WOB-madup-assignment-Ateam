@@ -1,5 +1,100 @@
+@use '/src/styles/constants/colors';
+@use '/src/styles/mixins/flexbox';
+@use '/src/styles/mixins/position';
+
 .container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  @include flexbox.flexbox(between, stretch);
+  flex-direction: column;
+  height: 100%;
+  width: 320px;
+  padding: 60px 40px;
+  box-shadow: colors.$BOX_SHADOW 2px 0px 8px 0px;
+  transition: 0.3s;
+  
+  .top {
+
+    h2 {
+      padding-bottom: 50px;
+      border-bottom: 1px solid colors.$SUB_GRAY;
+      margin-bottom: 50px;
+    }
+  
+    nav {
+      margin-bottom: 30px;
+
+      .subText {
+        font-size: 12px;
+        color: colors.$SUB_TEXT;
+        margin-bottom: 20px;
+        letter-spacing: 0.3px;
+      }
+      
+      ul {
+        li {
+          a {
+            @include flexbox.flexbox(start, center);
+            padding: 20px;
+            color: colors.$MAIN_TEXT_COLOR;
+            border-radius: 10px;
+            font-weight: 500;
+            letter-spacing: 0.4px;
+  
+            svg {
+              margin-right: 10px;
+            }
+  
+            &.isActive {
+              background: colors.$NAV_ACTIVE_BG;
+              color: colors.$NAV_ACTIVE;
+              
+              svg path{
+                fill: colors.$NAV_ACTIVE;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .bottom {
+
+    .guideBox {
+      @include flexbox.flexbox(start, center);
+      background: colors.$GUIDE_BOX;
+      border-radius: 10px;
+      padding: 25px 20px;
+      margin-bottom: 30px;
+      cursor: pointer;
+
+      p {
+        color: colors.$MAIN_TEXT_COLOR;
+        margin-left: 10px;
+        
+
+        span {
+          display: inline-block;
+          margin-top: 10px;
+          font-size: 12px;
+          color: colors.$SUB_TEXT; 
+        }
+      }
+    }
+
+    .serviceGuide {
+      font-size: 12px;
+      color: colors.$SUB_TEXT;
+      font-weight: 300;
+
+      span {
+        display: inline-block;
+        text-decoration: underline;
+        margin-top: 10px;
+        cursor: pointer;
+      }
+    }
+  }
 }
