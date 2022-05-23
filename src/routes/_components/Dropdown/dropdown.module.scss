@@ -1,12 +1,10 @@
 @use '/src/styles/mixins/flexbox';
 @use '/src/styles/mixins/position';
+@use '/src/styles/constants/levels';
+@use '/src/styles/constants/colors';
 
 .container {
-  $WHITE: hsl(0deg, 0%, 100%);
-  $DROPDOWN_BORDER: #d1d8dc;
-  $DROPDOWN_FONT: #3a474e;
   position: relative;
-  z-index: 1;
   width: 123px;
   height: 40px;
   user-select: none;
@@ -15,39 +13,37 @@
     display: none;
   }
 
-  &[open] {
-    ul {
-      position: absolute;
-      top: 43px;
-      display: block;
-      width: 100%;
-      max-height: 200px;
-      padding: 0 20px;
-      overflow-y: auto;
-      background-color: $WHITE;
-      border: 1px solid $DROPDOWN_BORDER;
-      border-radius: 10px;
+  ul.show {
+    position: absolute;
+    top: 43px;
+    z-index: levels.$DROPDOWN_ITEMS;
+    display: block;
+    width: 100%;
+    max-height: 200px;
+    padding: 0 20px;
+    overflow-y: auto;
+    background-color: colors.$DROPDOWN_BACKGROUND;
+    border: 1px solid colors.$DROPDOWN_BORDER;
+    border-radius: 10px;
 
-      li {
-        padding: 12px 0;
-        cursor: pointer;
+    li {
+      padding: 12px 0;
+      cursor: pointer;
 
-        p {
-          font-size: 14px;
-        }
+      p {
+        font-size: 14px;
       }
     }
   }
 
-  summary {
+  button {
     @include flexbox.flexbox(between, center);
+    z-index: levels.$DROPDOWN_BUTTON;
     width: 100%;
     height: 100%;
     padding: 0 10px 0 20px;
-    color: $DROPDOWN_FONT;
-    list-style: none;
-    cursor: pointer;
-    background-color: $WHITE;
+    color: colors.$DROPDOWN_FONT;
+    background-color: colors.$DROPDOWN_BACKGROUND;
     border: 1px solid #d1d8dc;
     border-radius: 10px;
 
@@ -65,7 +61,7 @@
       path {
         width: 12px;
         height: 8px;
-        fill: $DROPDOWN_FONT;
+        fill: colors.$DROPDOWN_FONT;
       }
     }
   }
@@ -74,6 +70,11 @@
 .container.big {
   width: 240px;
   height: 60px;
+
+  button > p {
+    font-size: 16px;
+    font-weight: bold;
+  }
 
   ul {
     top: 63px;
@@ -86,10 +87,5 @@
         font-size: 16px;
       }
     }
-  }
-
-  summary > p {
-    font-size: 16px;
-    font-weight: bold;
   }
 }
