@@ -5,7 +5,7 @@ import { setStatusOption } from 'states/ad'
 
 import ContentsContainer from 'routes/_components/ContentsContainer'
 import Dropdown from 'routes/_components/Dropdown'
-import Card from './Card/index'
+import CardList from './CardList'
 
 const DROPDOWN_ITEMS = ['전체보기', '진행중', '종료']
 
@@ -28,9 +28,7 @@ const AdManage = () => {
         </button>
       </div>
 
-      <div>
-        <Card />
-      </div>
+      <CardList />
     </ContentsContainer>
   )
 }
