@@ -1,3 +1,4 @@
+import ContentsContainer from './ContentsContainer'
 import Dropdown from './Dropdown'
 
 const DROPDOWN_ITEMS = ['매드업', 'ROAS', '광고비', '노출 수', '클릭 수', '전환 수', '매출']
@@ -17,14 +18,16 @@ const Components = () => {
   }
   return (
     <div>
-      big
-      <Dropdown size='big' items={DROPDOWN_ITEMS} onItemChange={handleItemChange} />
-      normal
-      <Dropdown size='normal' items={DROPDOWN_ITEMS} onItemChange={handleItemChange} />
-      unbordered
-      <Dropdown size='normal' items={DROPDOWN_ITEMS} onItemChange={handleItemChange} unbordered />
-      marked
-      <Dropdown size='big' items={DROPDOWN_ITEMS} onItemChange={handleItemChange} markColors={MARK_COLORS} />
+      <ContentsContainer>
+        big
+        <Dropdown size='big' items={DROPDOWN_ITEMS} onItemChange={handleItemChange} />
+        normal
+        <Dropdown size='normal' items={DROPDOWN_ITEMS} onItemChange={handleItemChange} />
+        unbordered
+        <Dropdown size='normal' items={DROPDOWN_ITEMS} onItemChange={handleItemChange} unbordered />
+        marked
+        <Dropdown size='big' items={DROPDOWN_ITEMS} onItemChange={handleItemChange} markColors={MARK_COLORS} />
+      </ContentsContainer>
     </div>
   )
 }
