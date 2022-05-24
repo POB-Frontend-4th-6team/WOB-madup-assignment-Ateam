@@ -20,16 +20,19 @@ const AdManage = () => {
   }
 
   return (
-    <ContentsContainer>
-      <div className={styles.dropdownAndButtonContainer}>
-        <Dropdown items={DROPDOWN_ITEMS} onItemChange={dispatchCurrentAdState} />
-        <button type='button' className={styles.makeAdButton}>
-          광고 만들기
-        </button>
-      </div>
+    <>
+      <h1 className={styles.pageHeader}>광고관리</h1>
+      <ContentsContainer>
+        <div className={styles.dropdownAndButtonContainer}>
+          <Dropdown items={DROPDOWN_ITEMS} onItemChange={dispatchCurrentAdState} />
+          <button type='button' className={styles.makeAdButton}>
+            광고 만들기
+          </button>
+        </div>
 
-      <CardList />
-    </ContentsContainer>
+        <CardList />
+      </ContentsContainer>
+    </>
   )
 }
 
