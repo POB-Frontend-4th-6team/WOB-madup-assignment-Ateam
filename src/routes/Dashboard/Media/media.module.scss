@@ -1,8 +1,55 @@
+@use '/src/styles/constants/colors';
+@use '/src/styles/mixins/responsive';
+
 .container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
   width: 80%;
   //   height: 500px;
   padding: 20px;
+
+  .tableContainer {
+    overflow-x: scroll;
+
+    table {
+      min-width: 1200px;
+      margin-bottom: 15px;
+      text-align: right;
+
+      tr {
+        line-height: 40px;
+        border-bottom: 1px solid #edeff1;
+
+        th,
+        td {
+          width: 200px;
+        }
+      }
+
+      thead {
+        tr {
+          color: #94a2ad;
+          border-top: 1px solid #edeff1;
+        }
+      }
+
+      tbody {
+        th {
+          text-align: left;
+        }
+
+        .totalSum {
+          color: #586cf5;
+        }
+      }
+    }
+
+    &::-webkit-scrollbar {
+      display: block;
+      background-color: #ffffff;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: #d1d8dc;
+      border-radius: 10px;
+    }
+  }
 }
