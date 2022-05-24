@@ -1,7 +1,8 @@
+import { SpinnerCircular, SpinnerCircularProps } from 'spinners-react'
 import styles from './loading.module.scss'
 
-const Loading = () => {
-  return <div className={styles.container}>Loading</div>
+const Loading = (props: SpinnerCircularProps) => {
+  return <SpinnerCircular {...props} secondaryColor='transparent' />
 }
 
 export default Loading
