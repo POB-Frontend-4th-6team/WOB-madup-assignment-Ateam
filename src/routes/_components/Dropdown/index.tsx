@@ -17,23 +17,15 @@ interface Props {
   onItemChange: (itemValue: string) => void
   size?: 'normal' | 'big'
   unbordered?: boolean
-  isMarked?: boolean
   markColors?: IMarkColors
 }
 
-const Dropdown = ({
-  items,
-  onItemChange,
-  size = 'normal',
-  unbordered = false,
-  isMarked = false,
-  markColors = {},
-}: Props) => {
+const Dropdown = ({ items, onItemChange, size = 'normal', unbordered = false, markColors = {} }: Props) => {
   const [selectedItem, setSelectedItem] = useState(items[0])
   const [isSelected, setIsSelected] = useState(false)
   const [showList, toggleShowList, , closeList] = useToggle()
   const clickAwayRef = useRef(null)
-
+  const isMarked = Object.keys(markColors).length > 0
   const handleItemClick = (e: MouseEvent<HTMLLIElement>) => {
     const {
       dataset: { value },

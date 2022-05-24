@@ -24,7 +24,7 @@ const Components = () => {
       unbordered
       <Dropdown size='normal' items={DROPDOWN_ITEMS} onItemChange={handleItemChange} unbordered />
       marked
-      <Dropdown size='big' items={DROPDOWN_ITEMS} onItemChange={handleItemChange} isMarked markColors={MARK_COLORS} />
+      <Dropdown size='big' items={DROPDOWN_ITEMS} onItemChange={handleItemChange} markColors={MARK_COLORS} />
     </div>
   )
 }
