@@ -1,0 +1,26 @@
+@use '/src/styles/mixins/flexbox';
+@use '/src/styles/mixins/position';
+@use '/src/styles/constants/colors';
+
+.modal {
+  @include position.middleBox;
+  z-index: 15;
+  width: 100%;
+  height: 100%;
+  background: rgba(colors.$BLACK, 10%);
+  backdrop-filter: blur(5px);
+}
+
+.modalBox {
+  @include position.middleBox;
+  z-index: 20;
+  padding: 20px;
+  background: colors.$WHITE;
+  border-radius: 10px;
+
+  .btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+  }
+}
