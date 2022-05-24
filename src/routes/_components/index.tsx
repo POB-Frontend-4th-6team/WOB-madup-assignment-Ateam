@@ -1,5 +1,6 @@
 import ContentsContainer from './ContentsContainer'
 import Dropdown from './Dropdown'
+import Loading from './Loading'
 
 const DROPDOWN_ITEMS = ['매드업', 'ROAS', '광고비', '노출 수', '클릭 수', '전환 수', '매출']
 const MARK_COLORS = {
@@ -27,6 +28,7 @@ const Components = () => {
         <Dropdown size='normal' items={DROPDOWN_ITEMS} onItemChange={handleItemChange} unbordered />
         marked
         <Dropdown size='big' items={DROPDOWN_ITEMS} onItemChange={handleItemChange} markColors={MARK_COLORS} />
+        <Loading />
       </ContentsContainer>
     </div>
   )
