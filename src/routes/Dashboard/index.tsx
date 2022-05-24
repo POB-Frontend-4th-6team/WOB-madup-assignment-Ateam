@@ -4,87 +4,16 @@ import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
 import { ko } from 'date-fns/esm/locale'
 import { VectorImage } from 'assets/svgs'
-import { VictoryChart, VictoryLine, VictoryAxis } from 'victory'
-
-// import trendData from 'assets/jsons/trend-data-set.json'
-
-const dummyData = {
-  report: {
-    daily: [
-      {
-        imp: 51479,
-        click: 559,
-        cost: 371790,
-        conv: 37,
-        convValue: 3668610,
-        ctr: 1.09,
-        cvr: 6.62,
-        cpc: 665.1,
-        cpa: 10048.38,
-        roas: 986.74,
-        date: '2022-02-01',
-      },
-      {
-        imp: 53385,
-        click: 690,
-        cost: 387181,
-        conv: 34,
-        convValue: 2870740,
-        ctr: 1.29,
-        cvr: 4.93,
-        cpc: 561.13,
-        cpa: 11387.68,
-        roas: 741.45,
-        date: '2022-02-02',
-      },
-      {
-        imp: 71403,
-        click: 693,
-        cost: 407050,
-        conv: 53,
-        convValue: 3065225,
-        ctr: 0.97,
-        cvr: 7.65,
-        cpc: 587.37,
-        cpa: 7680.19,
-        roas: 753.03,
-        date: '2022-02-03',
-      },
-      {
-        imp: 71010,
-        click: 693,
-        cost: 429057,
-        conv: 50,
-        convValue: 4190550,
-        ctr: 0.98,
-        cvr: 7.22,
-        cpc: 619.13,
-        cpa: 8581.14,
-        roas: 976.69,
-        date: '2022-02-04',
-      },
-      {
-        imp: 55885,
-        click: 654,
-        cost: 428091,
-        conv: 27,
-        convValue: 1385169,
-        ctr: 1.17,
-        cvr: 4.13,
-        cpc: 654.57,
-        cpa: 15855.22,
-        roas: 323.57,
-        date: '2022-02-05',
-      },
-    ],
-  },
-}
+import { VictoryChart, VictoryLine, VictoryAxis, VictoryVoronoiContainer } from 'victory'
+import { dataType } from 'types/totalAd'
+import trendData from 'assets/jsons/trend-data-set.json'
+import dayjs from 'dayjs'
 
 const Dashboard = () => {
   const [startDate, setStartDate] = useState(new Date())
   const [endDate, setEndDate] = useState(new Date(new Date().setDate(new Date().getDate() + 7))) // 오늘 날짜에서 +7
-  const [dayDif, setDayDif] = useState(0) // 날짜 차이
   const [tickFormat, setTickFormat] = useState<string[]>([])
+  const [selectedDayDate, setSelectedDayData] = useState<dataType[]>()
 
   const onChange = (dates: any) => {
     const [start, end] = dates
@@ -94,29 +23,42 @@ const Dashboard = () => {
 
   useEffect(() => {
     if (endDate === null || startDate === null) return
-    setDayDif((endDate.getTime() - startDate.getTime()) / (1000 * 60 * 60 * 24))
-  }, [startDate, endDate])
-
-  useEffect(() => {
-    if (endDate === null || startDate === null) return
-    if (dayDif === 0) return
+    // 몇일이 차이나는 지
+    const dayDif = (endDate.getTime() - startDate.getTime()) / (1000 * 60 * 60 * 24)
     let box = []
     // 해당 월의 마지막 날짜
     const lastDay = new Date(startDate.getFullYear(), startDate.getMonth() + 1, 0).getDate()
     let start = startDate.getDate()
     let month = startDate.getMonth() + 1
+    const year = startDate.getFullYear()
     for (let i = 0; i <= dayDif; i += 1) {
       if (start > lastDay) {
         start = 1
         month += 1
       }
-      box.push(`${month}월${start}일`)
-      // setTickFormat(prev=>[...prev,`${month}월${start}일`]) 이런식으로 만들고 싶었는데 실패..
+      box.push(`${year}-${month}-${start}`)
       start += 1
     }
     setTickFormat(box)
     box = []
-  }, [startDate, endDate, dayDif])
+  }, [startDate, endDate])
+
+  useEffect(() => {
+    if (tickFormat.length === 0) return
+    let box = []
+    for (let i = 0; i < tickFormat.length; i += 1) {
+      const selectedDay = trendData.report.daily.find((item) => {
+        const now = dayjs(item.date)
+        const FullDate = `${now.get('y')}-${now.get('M') + 1}-${now.get('D')}`
+        return FullDate === tickFormat[i]
+      })
+      // y에 선택된 데이터
+      if (selectedDay?.roas === undefined) break
+      box.push({ x: i + 1, y: selectedDay?.roas })
+    }
+    setSelectedDayData(box)
+    box = []
+  }, [tickFormat])
 
   return (
     <div className={styles.container}>
@@ -144,17 +86,27 @@ const Dashboard = () => {
         <div className={styles.mainContainer}>
           <div className={styles.mainCard} />
           <div className={styles.mainChart}>
-            <VictoryChart width={1440}>
-              <VictoryAxis tickFormat={tickFormat} />
-              <VictoryAxis dependentAxis tickFormat={['5백만', '1천만', '1.5천만', '2천만']} />
+            <VictoryChart
+              width={1440}
+              height={500}
+              containerComponent={<VictoryVoronoiContainer labels={() => '123'} />}
+            >
+              <VictoryAxis
+                tickFormat={tickFormat.map((date) => {
+                  const arr = date.split('-')
+                  return `${arr[1]}월${arr[2]}일`
+                })}
+              />
+              <VictoryAxis dependentAxis style={{ grid: { stroke: 'lightGrey' } }} tickFormat={(y) => y} />
               <VictoryLine
-                data={[
-                  { x: 1, y: 2000 },
-                  { x: 2, y: 1000 },
-                  { x: 3, y: 4000 },
-                  { x: 4, y: 4 },
-                  { x: 5, y: 6 },
-                ]}
+                style={{
+                  data: {
+                    // 선 색상
+                    stroke: '#c43a31',
+                    strokeWidth: '5px',
+                  },
+                }}
+                data={selectedDayDate}
               />
             </VictoryChart>
           </div>

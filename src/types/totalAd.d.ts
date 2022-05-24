@@ -1,1 +1,4 @@
-// 통합 광고 현황 타입
+export interface dataType {
+  x: number
+  y: number | undefined
+}
