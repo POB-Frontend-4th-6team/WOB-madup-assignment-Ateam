@@ -1,8 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit'
 import sidebar from './sidebar'
+import ad from './ad'
 
 export const store = configureStore({
   reducer: {
+    ad,
     sidebar,
   },
   devTools: process.env.NODE_ENV !== 'production',
