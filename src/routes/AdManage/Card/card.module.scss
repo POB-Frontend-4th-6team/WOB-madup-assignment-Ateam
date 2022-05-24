@@ -16,14 +16,21 @@ $DT_FONT_COLOR: #94a2ad;
   border-radius: 10px;
 }
 
+.cardFlexbox {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: start;
+}
+
 .cardContainer {
   @include flexbox.flexbox(start, start);
   @include borderColorAndRadius(#d1d8dc);
   flex-direction: column;
-  width: 300px;
+  width: 270px;
   height: 400px;
   padding: 30px;
-  margin: 20px;
+  margin-top: 50px;
+  margin-right: 20px;
 }
 
 .cardHeader {

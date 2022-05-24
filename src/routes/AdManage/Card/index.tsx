@@ -16,6 +16,8 @@ import {
 const Card = () => {
   const statusOption = useAppSelector(getStatusOption)
 
+  console.log(statusOption)
+
   let fetchedAdData: advertisementCardType[]
 
   if (statusOption === 'All') fetchedAdData = fetchAllAd()
@@ -52,7 +54,7 @@ const Card = () => {
   }
 
   return (
-    <div>
+    <div className={styles.cardFlexbox}>
       <ValidCardList />
     </div>
   )
