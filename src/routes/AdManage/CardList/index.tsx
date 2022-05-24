@@ -1,5 +1,6 @@
-import { useAppSelector } from 'hooks'
+import styles from './cardList.module.scss'
 
+import { useAppSelector } from 'hooks'
 import { advertisementCardType } from 'types/ad.d'
 import { getStatusOption } from 'states/ad'
 import { fetchAllAd, fetchOnlyActiveAd, fetchOnlyEndedAd } from 'services/ad'
@@ -16,7 +17,9 @@ const CardList = () => {
   else if (statusOption === 'Ended') fetchedAdData = fetchOnlyEndedAd()
   else fetchedAdData = fetchAllAd()
 
-  return <Card adInfo={fetchedAdData} />
+  const Cards: JSX.Element[] = fetchedAdData.map((info) => <Card key={`Card_Info${info.title}`} info={info} />)
+
+  return <div className={styles.cardFlexbox}>{Cards}</div>
 }
 
 export default CardList

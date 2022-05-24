@@ -16,12 +16,6 @@ $DT_FONT_COLOR: #94a2ad;
   border-radius: 10px;
 }
 
-.cardFlexbox {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: start;
-}
-
 .cardContainer {
   @include flexbox.flexbox(start, start);
   @include borderColorAndRadius(#d1d8dc);
