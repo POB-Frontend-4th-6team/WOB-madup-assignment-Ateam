@@ -21,7 +21,16 @@
 
   .btn {
     position: absolute;
-    top: 20px;
-    right: 20px;
+    top: 10px;
+    right: 15px;
+    padding: 10px;
+    border-radius: 50%;
+    fill: colors.$SUB_TEXT;
+    @include flexbox.flexbox;
+    transform: scale(0.8);
+
+    &:hover {
+      background: rgba(colors.$SUB_TEXT, 0.12);
+    }
   }
 }
