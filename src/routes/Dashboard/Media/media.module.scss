@@ -2,13 +2,28 @@
 @use '/src/styles/mixins/responsive';
 
 .container {
-  width: 80%;
-  padding: 20px;
+  .chartContainer {
+    min-height: 300px;
+    max-height: 400px;
+    overflow-x: scroll;
+    overflow-y: hidden;
+
+    &::-webkit-scrollbar {
+      display: block;
+      background-color: colors.$WHITE;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: colors.$SCROLL_BAR;
+      border-radius: 10px;
+    }
+  }
 
   .tableContainer {
     overflow-x: scroll;
 
     table {
+      width: 100%;
       min-width: 1200px;
       margin-bottom: 15px;
       color: colors.$MAIN_TEXT_COLOR;
@@ -44,7 +59,7 @@
 
     &::-webkit-scrollbar {
       display: block;
-      background-color: colors.$MAIN_BG;
+      background-color: colors.$WHITE;
     }
 
     &::-webkit-scrollbar-thumb {
