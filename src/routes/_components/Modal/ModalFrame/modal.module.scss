@@ -12,11 +12,12 @@
 }
 
 .modalBox {
-  @include position.middleBox;
   z-index: 20;
   padding: 20px;
   background: colors.$WHITE;
   border-radius: 10px;
+  box-shadow: colors.$NAV_SHADOW 2px 0 8px 0;
+  @include position.middleBox;
 
   .btn {
     position: absolute;
