@@ -7,15 +7,13 @@ import Components from './_components'
 import Header from './_components/Header'
 import Sidebar from './_components/Sidebar'
 
-import Media from './Dashboard/Media'
-
 const App = () => {
   return (
     <main className={styles.app}>
       <Header />
       <Sidebar />
       <Routes>
-        <Route path='/' element={<Media />} />
+        <Route path='/' element={<Dashboard />} />
         <Route path='adManage' element={<AdManage />} />
         <Route path='components' element={<Components />} />
         <Route path='*' element={<div>404</div>} />

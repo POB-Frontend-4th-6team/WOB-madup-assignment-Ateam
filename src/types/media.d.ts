@@ -3,3 +3,9 @@ export interface IMediaChart {
   value: number
   category: string
 }
+
+export interface IMediaLabel {
+  name: string
+  krName: string
+  color: string
+}
