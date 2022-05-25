@@ -1,6 +1,16 @@
 @use '/src/styles/mixins/flexbox';
 @use '/src/styles/constants/colors';
 
+.titleBox {
+  width: 100%;
+  padding: 10px 30px;
+
+  .title {
+    font-size: 16px;
+    font-weight: 500;
+  }
+}
+
 .mainContainer {
   display: flex;
   flex-direction: column;

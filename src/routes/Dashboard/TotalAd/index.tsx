@@ -52,20 +52,25 @@ const TotalAd = () => {
   )
 
   return (
-    <ContentsContainer>
-      <div className={styles.mainContainer}>
-        <div className={styles.mainCard} />
-        <div className={styles.dropDownBox}>
-          <div className={styles.dropDownLines}>
-            <Dropdown items={DropDownList} onItemChange={onClick1} markColors={MARK_COLORS} />
-            <Dropdown items={DropDownList2} onItemChange={onClick2} markColors={MARK_COLORS} />
-          </div>
-          <Dropdown items={['일간', '주간']} onItemChange={onDayOrWeek} size='normal' />
-        </div>
-
-        <AdChart Selected={Selected} Selected2={Selected2} val={val} dayOrWeek={dayOrWeek} />
+    <>
+      <div className={styles.titleBox}>
+        <p className={styles.title}>통합 광고 현황</p>
       </div>
-    </ContentsContainer>
+      <ContentsContainer>
+        <div className={styles.mainContainer}>
+          <div className={styles.mainCard} />
+          <div className={styles.dropDownBox}>
+            <div className={styles.dropDownLines}>
+              <Dropdown items={DropDownList} onItemChange={onClick1} markColors={MARK_COLORS} />
+              <Dropdown items={DropDownList2} onItemChange={onClick2} markColors={MARK_COLORS} />
+            </div>
+            <Dropdown items={['일간', '주간']} onItemChange={onDayOrWeek} size='normal' />
+          </div>
+
+          <AdChart Selected={Selected} Selected2={Selected2} val={val} dayOrWeek={dayOrWeek} />
+        </div>
+      </ContentsContainer>
+    </>
   )
 }
 
