@@ -2,18 +2,25 @@ import { DownArrow, UpArrow } from 'assets/svgs/madup'
 import styles from './item.module.scss'
 
 interface Props {
-  isIncreased: boolean
+  item: {
+    isIncreased: boolean
+    name: string
+    value: string
+    diff: string
+  }
 }
 
-const Item = ({ isIncreased }: Props): JSX.Element => {
+const Item = ({ item }: Props): JSX.Element => {
+  const { name, value, diff, isIncreased } = item
+
   return (
     <li className={styles.gridItem}>
-      <p>111</p>
+      <p>{name}</p>
       <div className={styles.details}>
-        <strong>1,000만 원</strong>
+        <strong>{value}</strong>
         <div>
           {isIncreased ? <UpArrow /> : <DownArrow />}
-          <p>1,000만 회</p>
+          <p className={styles.light}>{diff}</p>
         </div>
       </div>
     </li>
