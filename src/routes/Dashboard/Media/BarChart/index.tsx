@@ -10,23 +10,19 @@ import {
 
 import styles from './barChart.module.scss'
 import CHART_STYLE from './chartStyle'
-import { IMediaLabel } from 'types/media'
+import { IMediaInfo } from 'types/media'
 import { getMediaChartData } from 'services/media'
 import ResponsiveVictoryChart from './ResponsiveVictoryChart'
 
-interface IProps {
-  mediaInfo: IMediaLabel[]
-}
-
 const tickFormat = ['광고비', '매출', '노출 수', '클릭 수', '전환 수']
 
-const BarChart = ({ mediaInfo }: IProps) => {
-  const mediaColor = mediaInfo.map((v) => v.color)
-  const legendData = mediaInfo.map((v) => {
+const BarChart = ({ mediaLabelList, TimeList }: IMediaInfo) => {
+  const mediaColor = mediaLabelList.map((v) => v.color)
+  const legendData = mediaLabelList.map((v) => {
     return { name: v.krName, symbol: { fill: v.color } }
   })
 
-  const { mediaData } = getMediaChartData()
+  const { mediaData } = getMediaChartData(TimeList)
 
   return (
     <article>
