@@ -47,13 +47,7 @@ const TrendGrid = (): JSX.Element => {
   return (
     <div className={styles.grid}>
       {items.map((item) => (
-        <Item
-          isIncreased={item.isIncreased}
-          key={`grid-item-${item.key}`}
-          name={item.name}
-          value={item.value}
-          diff={item.diff}
-        />
+        <Item key={`grid-item-${item.key}`} item={item} />
       ))}
     </div>
   )
