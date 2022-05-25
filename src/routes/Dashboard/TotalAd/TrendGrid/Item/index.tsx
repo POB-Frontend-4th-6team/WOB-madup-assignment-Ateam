@@ -16,7 +16,7 @@ const Item = ({ isIncreased, name, value, diff }: Props): JSX.Element => {
         <strong>{value}</strong>
         <div>
           {isIncreased ? <UpArrow /> : <DownArrow />}
-          <p>{diff}</p>
+          <p className={styles.light}>{diff}</p>
         </div>
       </div>
     </li>
