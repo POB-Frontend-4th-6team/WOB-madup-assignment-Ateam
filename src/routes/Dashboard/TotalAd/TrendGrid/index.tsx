@@ -1,7 +1,5 @@
 import styles from './trendGrid.module.scss'
 import Item from './Item'
-import { useEffect } from 'react'
-import { getTrendDatas } from 'services/totalAd'
 
 const TrendGrid = (): JSX.Element => {
   return (
