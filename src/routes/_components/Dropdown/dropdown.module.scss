@@ -20,7 +20,6 @@
     display: block;
     width: 100%;
     max-height: 200px;
-    padding: 0 20px;
     overflow-y: auto;
     background-color: colors.$DROPDOWN_BACKGROUND;
     border: 1px solid colors.$DROPDOWN_BORDER;
@@ -28,11 +27,21 @@
 
     li {
       @include flexbox.flexbox(start, center);
-      padding: 12px 0;
+      padding: 12px 20px;
       cursor: pointer;
+
+      + li {
+        border-top: 1px solid rgba(colors.$DROPDOWN_BORDER, 0.5);
+      }
+
+      &:hover {
+        background: rgba(colors.$SUB_TEXT, 0.05);
+      }
 
       p {
         font-size: 14px;
+        color: colors.$DROPDOWN_FONT;
+        letter-spacing: 0.4px;
       }
     }
   }
@@ -52,6 +61,7 @@
       flex-grow: 1;
       overflow: hidden;
       font-size: 14px;
+      font-weight: 500;
       text-align: left;
       text-overflow: ellipsis;
       white-space: nowrap;
@@ -87,18 +97,25 @@
 
   button > p {
     font-size: 16px;
-    font-weight: bold;
+    font-weight: 500;
+    color: colors.$DROPDOWN_FONT;
+    letter-spacing: 0.4px;
   }
 
   ul {
-    top: 55px;
-    padding: 0 20px;
+    top: 53px;
 
     li {
-      padding: 16px 0;
+      padding: 16px 20px;
 
       p {
         font-size: 16px;
+        color: colors.$DROPDOWN_FONT;
+        letter-spacing: 0.4px;
+      }
+
+      &.addService {
+        padding: 0;
       }
     }
   }
