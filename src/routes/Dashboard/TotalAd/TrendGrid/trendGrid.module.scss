@@ -1,4 +1,5 @@
 @use '/src/styles/mixins/responsive';
+@use '/src/styles/mixins/flexbox';
 
 .grid {
   display: grid;
@@ -10,4 +11,9 @@
   @include responsive.after(LD) {
     grid-template-columns: 1fr 1fr 1fr;
   }
+}
+
+.loading {
+  @include flexbox.flexbox(center,center);
+  width: 100%;
 }
