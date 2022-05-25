@@ -25,12 +25,10 @@ const ITEMS_INIT = [
 const TrendGrid = (): JSX.Element => {
   const startDate = useAppSelector(getStartDate)
   const endDate = useAppSelector(getEndDate)
-  const [isLoading, setIsLoading] = useState(false)
   const [items, setItems] = useState(ITEMS_INIT)
 
   useEffect(() => {
     if (!endDate || !startDate) return
-    setIsLoading(true)
     const trendDatasSum: Dataset = getTrendDatas(startDate, endDate)
     const prevTrendDatasSum: Dataset = getPrevTrendDatas(startDate, endDate)
 
@@ -45,17 +43,7 @@ const TrendGrid = (): JSX.Element => {
     })
 
     setItems(newItems)
-    setTimeout(() => {
-      setIsLoading(false)
-    }, 1000)
   }, [endDate, startDate])
-
-  if (isLoading)
-    return (
-      <div className={styles.loading}>
-        <Loading size='175px' />
-      </div>
-    )
 
   return (
     <div className={styles.grid}>
