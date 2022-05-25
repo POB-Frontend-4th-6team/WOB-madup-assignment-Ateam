@@ -24,12 +24,6 @@ $FONT_WEIGHT_LIGHT: 300;
   width: 100%;
   height: 420px;
   padding: 30px 20px;
-  margin: 20px 0 0;
-
-  @include responsive.after(SD) {
-    width: 320px;
-    margin: 20px 20px 0 0;
-  }
 }
 
 .cardHeader {
