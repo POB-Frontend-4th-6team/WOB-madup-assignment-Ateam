@@ -22,6 +22,8 @@
     }
 
     thead {
+      text-align: center;
+
       tr {
         color: colors.$SUB_TEXT;
         border-top: 1px solid colors.$CHART_BORDER;
@@ -29,6 +31,8 @@
     }
 
     tbody {
+      text-align: center;
+
       th {
         text-align: left;
       }
