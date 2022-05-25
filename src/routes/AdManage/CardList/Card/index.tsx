@@ -17,13 +17,13 @@ const Card = ({ info }: Props) => {
         <dt>광고 생성일</dt>
         <dd>{startDate(info.startDate, info.endDate)}</dd>
         <dt>일 희망 예산</dt>
-        <dd>{dayBudget(info.budget)}만원</dd>
+        <dd>{dayBudget(info.budget)}</dd>
         <dt>광고 수익률</dt>
         <dd>{info.report.roas}%</dd>
         <dt>매출</dt>
         <dd>{totalSales(info.report.roas, info.report.cost)}</dd>
         <dt>광고 비용</dt>
-        <dd>{info.report.cost}</dd>
+        <dd>{dayBudget(info.report.cost)}</dd>
       </dl>
       <button type='button' className={styles.editButton}>
         수정하기
