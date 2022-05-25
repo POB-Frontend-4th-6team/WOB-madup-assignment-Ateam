@@ -35,25 +35,22 @@ const AdManage = () => {
   const handleModalOpen = () => dispatch(setModal(true))
 
   return (
-    <>
-      <h1 className={styles.pageHeader}>광고관리</h1>
-      {isLoading && <Loading size={150} color='#3a474e' style={{ margin: '50px 0 0 50px' }} />}
-      {!isLoading && (
+    <div className={styles.container}>
+      <div className={styles.header}>
+        <h1 className={styles.headerTitle}>광고관리</h1>
+      </div>
+      <section className={styles.adContainer}>
         <ContentsContainer>
-          <div className={styles.dropdownAndButtonContainer}>
+          <div className={styles.dropDownBox}>
             <Dropdown items={DROPDOWN_ITEMS} onItemChange={dispatchCurrentAdState} />
-            <button type='button' onClick={handleModalOpen} className={styles.makeAdButton}>
+            <button type='button' className={styles.adButton}>
               광고 만들기
             </button>
           </div>
-
           <CardList />
         </ContentsContainer>
-      )}
-      <Modal width='500px' height='500px' text='광고 관리카드 생성'>
-        <CardModalContents />
-      </Modal>
-    </>
+      </section>
+    </div>
   )
 }
 

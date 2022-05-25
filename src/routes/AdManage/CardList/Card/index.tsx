@@ -9,8 +9,8 @@ interface Props {
 
 const Card = ({ info }: Props) => {
   return (
-    <section className={styles.cardContainer}>
-      <h1 className={styles.cardHeader}>{sortWebAndAppAd(info.adType, info.title)}</h1>
+    <article className={styles.cardContainer}>
+      <h2 className={styles.cardHeader}>{info.title}</h2>
       <dl>
         <dt>상태</dt>
         <dd>{englishToKorean(info.status)}</dd>
@@ -28,7 +28,7 @@ const Card = ({ info }: Props) => {
       <button type='button' className={styles.editButton}>
         수정하기
       </button>
-    </section>
+    </article>
   )
 }
 
