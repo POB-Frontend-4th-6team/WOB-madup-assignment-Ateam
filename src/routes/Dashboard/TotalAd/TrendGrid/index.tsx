@@ -1,7 +1,9 @@
-import styles from './grid.module.scss'
+import styles from './trendGrid.module.scss'
 import Item from './Item'
+import { useEffect } from 'react'
+import { getTrendDatas } from 'services/totalAd'
 
-const Grid = (): JSX.Element => {
+const TrendGrid = (): JSX.Element => {
   return (
     <div className={styles.grid}>
       {[1, 2, 3, 4, 5, 6].map((item) => (
@@ -11,4 +13,4 @@ const Grid = (): JSX.Element => {
   )
 }
 
-export default Grid
+export default TrendGrid
