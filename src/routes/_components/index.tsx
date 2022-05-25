@@ -1,6 +1,7 @@
 import ContentsContainer from './ContentsContainer'
 import Dropdown from './Dropdown'
 import Loading from './Loading'
+import Modal from './Modal/ModalFrame'
 
 const DROPDOWN_ITEMS = ['매드업', 'ROAS', '광고비', '노출 수', '클릭 수', '전환 수', '매출']
 const MARK_COLORS = {
@@ -29,6 +30,10 @@ const Components = () => {
         marked
         <Dropdown size='big' items={DROPDOWN_ITEMS} onItemChange={handleItemChange} markColors={MARK_COLORS} />
         <Loading />
+        Modal
+        <Modal width='500px' height='300px'>
+          <p>content</p>
+        </Modal>
       </ContentsContainer>
     </div>
   )
