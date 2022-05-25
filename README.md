@@ -25,9 +25,17 @@
 
 ## 기능
 ### Sidebar
-- 광고 센터란을 통해 페이지를 이동한다.
-- 서비스 dropdown에서 서비스를 선택한다.
-- 화면이 줄어들면 header에 메뉴 버튼이 생기고 누르면 sidebar를 보이게 한다.
+- 광고 센터란을 통해 페이지를 이동하며 페이지는 대시보드와, 광고관리가 있다.
+- 서비스란 dropdown 클릭 시 dropdown의 목록을 확인할 수 있다.
+- dropdown에 목록 중 하나인 서비스 추가하기를 클릭하면 모달이 나타나며 해당 모달에는 input박스가 담겨져 있다.
+- 추가할 서비스를 입력 후 추가 또는 enter클릭 시 dropdown 리스트에 추가된다.
+- 해당 목록은 로컬스토리지에 저장된다.
+
+![모달](https://user-images.githubusercontent.com/65527334/170379448-c2e52d41-3da3-48d3-8f8b-58f680698f47.gif)
+
+- 반응형을 고려하여 사이드바를 구현하였으며 화면이 줄어들면 header에 메뉴 버튼이 생기고, 해당 버튼을 누를 시 sidebar가 나타난다.
+
+![사이드바](https://user-images.githubusercontent.com/65527334/170376704-58629c5a-cd21-4193-8bfa-0f8789aca389.gif)
 
 ### 대시보드 페이지
 - datePicker를 통해 날짜 범위를 선택한다.
