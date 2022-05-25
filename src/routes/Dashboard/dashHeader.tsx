@@ -45,22 +45,20 @@ const DashHeader = () => {
 
   return (
     <div className={styles.header}>
-      <div className={styles.headerBox}>
-        <p className={styles.headerTitle}>대시보드</p>
-        <div className={styles.date}>
-          <DatePicker
-            selected={startDate}
-            onChange={onChange}
-            selectsStart
-            startDate={startDate}
-            endDate={endDate}
-            selectsRange
-            locale={ko}
-            dateFormat='yyyy년 MM월 dd일'
-            className={styles.datePicker}
-          />
-          <VectorImage />
-        </div>
+      <h1 className={styles.headerTitle}>대시보드</h1>
+      <div className={styles.date}>
+        <DatePicker
+          selected={startDate}
+          onChange={onChange}
+          selectsStart
+          startDate={startDate}
+          endDate={endDate}
+          selectsRange
+          locale={ko}
+          dateFormat='yyyy년 MM월 dd일'
+          className={styles.datePicker}
+        />
+        <VectorImage />
       </div>
     </div>
   )
