@@ -1,14 +1,15 @@
 @use '/src/styles/mixins/flexbox';
+@use '/src/styles/constants/colors';
+@use '/src/styles/mixins/responsive';
 
-$FONT_WEIGHT: 500;
-$DT_FONT_COLOR: #94a2ad;
+$FONT_WEIGHT_BOLD: 500;
+$FONT_WEIGHT_LIGHT: 300;
 
 @mixin adInfo($widthPercentage) {
   float: left;
   width: $widthPercentage;
-  padding: 5px;
-  margin: 8px 0;
-  border-bottom: 1.5px solid #ebeff1;
+  padding: 12px 0;
+  border-bottom: 1px solid colors.$SUB_GRAY;
 }
 
 @mixin borderColorAndRadius($borderColor) {
@@ -17,41 +18,48 @@ $DT_FONT_COLOR: #94a2ad;
 }
 
 .cardContainer {
-  @include flexbox.flexbox(start, start);
-  @include borderColorAndRadius(#d1d8dc);
+  @include flexbox.flexbox(between, start);
+  @include borderColorAndRadius(colors.$BOX_COLOR);
   flex-direction: column;
-  width: 270px;
-  height: 400px;
-  padding: 30px;
-  margin-top: 50px;
-  margin-right: 20px;
+  width: 100%;
+  height: 420px;
+  padding: 30px 20px;
+  margin: 20px 0 0;
+
+  @include responsive.after(SD) {
+    width: 320px;
+    margin: 20px 20px 0 0;
+  }
 }
 
 .cardHeader {
-  font-size: 15px;
-  font-weight: $FONT_WEIGHT;
+  font-size: 16px;
+  font-weight: $FONT_WEIGHT_BOLD;
 }
 
 dl {
   width: 100%;
   margin-top: 20px;
   font-size: 12px;
+  border-top: 1px solid colors.$SUB_GRAY;
 }
 
 dt {
   @include adInfo(40%);
-  color: $DT_FONT_COLOR;
+  font-weight: $FONT_WEIGHT_LIGHT;
+  color: colors.$SUB_TEXT;
 }
 
 dd {
   @include adInfo(60%);
-  font-weight: $FONT_WEIGHT;
+  font-weight: $FONT_WEIGHT_BOLD;
 }
 
 .editButton {
   width: 100px;
-  height: 50px;
+  padding: 10px 20px;
   margin-top: 20px;
-  font-weight: $FONT_WEIGHT;
-  @include borderColorAndRadius(#d1d8dc);
+  font-size: 14px;
+  font-weight: $FONT_WEIGHT_BOLD;
+  @include borderColorAndRadius(colors.$BOX_COLOR);
 }

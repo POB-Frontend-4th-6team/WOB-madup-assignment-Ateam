@@ -1,5 +1,7 @@
+@use '/src/styles/mixins/flexbox';
+
 .cardFlexbox {
-  display: flex;
+  @include flexbox.flexbox(start, start);
   flex-wrap: wrap;
-  justify-content: flex-start;
+  margin-top: 20px;
 }
