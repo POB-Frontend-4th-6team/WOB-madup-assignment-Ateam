@@ -1,3 +1,4 @@
+import TrendGrid from 'routes/Dashboard/TotalAd/TrendGrid'
 import ContentsContainer from './ContentsContainer'
 import Dropdown from './Dropdown'
 import Loading from './Loading'
@@ -30,6 +31,7 @@ const Components = () => {
         marked
         <Dropdown size='big' items={DROPDOWN_ITEMS} onItemChange={handleItemChange} markColors={MARK_COLORS} />
         <Loading />
+        <TrendGrid />
         Modal
         <Modal width='500px' height='300px'>
           <p>content</p>

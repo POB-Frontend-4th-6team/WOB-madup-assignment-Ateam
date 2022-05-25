@@ -3,17 +3,20 @@ import styles from './item.module.scss'
 
 interface Props {
   isIncreased: boolean
+  name: string
+  value: number
+  diff: number
 }
 
-const Item = ({ isIncreased }: Props): JSX.Element => {
+const Item = ({ isIncreased, name, value, diff }: Props): JSX.Element => {
   return (
     <li className={styles.gridItem}>
-      <p>111</p>
+      <p>{name}</p>
       <div className={styles.details}>
-        <strong>1,000만 원</strong>
+        <strong>{value}</strong>
         <div>
           {isIncreased ? <UpArrow /> : <DownArrow />}
-          <p>1,000만 회</p>
+          <p>{diff}</p>
         </div>
       </div>
     </li>
