@@ -1,14 +1,10 @@
 import { MouseEvent, ReactNode, useEffect, useRef, useState } from 'react'
-import { DropdownIcon } from 'assets/svgs'
+import { DropdownIcon } from 'assets/svgs/madup'
 import { cx } from 'styles'
 import { useClickAway } from 'react-use'
 import useToggle from 'hooks/useToggle'
 import styles from './dropdown.module.scss'
 
-/** TODO:
- *   border 추가
- *  marker 색 추가
- */
 interface IMarkColors {
   [item: string]: string
 }
