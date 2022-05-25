@@ -21,6 +21,6 @@ export const endDateSlice = createSlice({
 
 export const { setEndDate } = endDateSlice.actions
 
-export const getEndDate = (state: RootState): Date => state.enddate.endDate
+export const getEndDate = (state: RootState): Date => state.endDate.endDate
 
 export default endDateSlice.reducer

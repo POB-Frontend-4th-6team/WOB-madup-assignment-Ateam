@@ -45,7 +45,7 @@ const TotalAd = () => {
 
   const onDayOrWeek = useCallback(
     (e: string) => {
-      if (timeList.length < 14 && e === '주간') console.log('14일 이상 선택하세요')
+      if (timeList.length < 14 && e === '주간') alert('14일 이상 선택하세요!')
       else setDayOrWeek(e)
     },
     [timeList]

@@ -6,8 +6,8 @@ import styles from './dashboard.module.scss'
 import 'react-datepicker/dist/react-datepicker.css'
 import { useAppDispatch, useAppSelector } from 'hooks'
 import { setTimeListFormat } from 'states/time'
-import { getStartDate, setStartDate } from 'states/startdate'
-import { getEndDate, setEndDate } from 'states/enddate'
+import { getStartDate, setStartDate } from 'states/startDate'
+import { getEndDate, setEndDate } from 'states/endDate'
 
 const DashHeader = () => {
   const dispatch = useAppDispatch()
@@ -24,7 +24,10 @@ const DashHeader = () => {
   useEffect(() => {
     if (endDate === null || startDate === null) return
     // 몇일이 차이나는 지
+
     const dayDif = (endDate.getTime() - startDate.getTime()) / (1000 * 60 * 60 * 24)
+    console.log(dayDif)
+
     let box = []
     // 해당 월의 마지막 날짜
     const lastDay = new Date(startDate.getFullYear(), startDate.getMonth() + 1, 0).getDate()

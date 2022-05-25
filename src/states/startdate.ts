@@ -21,6 +21,6 @@ export const startDateSlice = createSlice({
 
 export const { setStartDate } = startDateSlice.actions
 
-export const getStartDate = (state: RootState): Date => state.startdate.startDate
+export const getStartDate = (state: RootState): Date => state.startDate.startDate
 
 export default startDateSlice.reducer
