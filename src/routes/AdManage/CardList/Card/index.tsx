@@ -10,7 +10,7 @@ interface Props {
 const Card = ({ info }: Props) => {
   return (
     <article className={styles.cardContainer}>
-      <h2 className={styles.cardHeader}>{info.title}</h2>
+      <h2 className={styles.cardHeader}>{sortWebAndAppAd(info.adType, info.title)}</h2>
       <dl>
         <dt>상태</dt>
         <dd>{englishToKorean(info.status)}</dd>

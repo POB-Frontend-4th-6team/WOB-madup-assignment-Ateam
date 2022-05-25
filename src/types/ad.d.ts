@@ -1,5 +1,5 @@
 export interface advertisementCardType {
-  id: number | undefined
+  id: number
   adType: string
   title: string
   budget: number

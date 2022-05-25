@@ -1,24 +1,16 @@
 import DATA from '../assets/svgs/jsons/admanagement.json'
 import { advertisementCardType } from 'types/ad'
 
-import store from 'store'
-
-const RES = store.get('adList')
-
 export const fetchAllAd = () => {
   return DATA.ads
 }
 
-export const fetchAllAdFromStorage = () => {
-  return RES
+export const fetchOnlyActiveAd = () => {
+  return DATA.ads.filter((ad: advertisementCardType) => ad.status === 'active')
 }
 
-export const fetchOnlyActiveAdFromStorage = () => {
-  return RES.filter((ad: advertisementCardType) => ad.status === 'active')
-}
-
-export const fetchOnlyEndedAdFromStorage = () => {
-  return RES.filter((ad: advertisementCardType) => ad.status === 'ended')
+export const fetchOnlyEndedAd = () => {
+  return DATA.ads.filter((ad: advertisementCardType) => ad.status === 'ended')
 }
 
 export const sortWebAndAppAd = (type: string, title: string) => {
