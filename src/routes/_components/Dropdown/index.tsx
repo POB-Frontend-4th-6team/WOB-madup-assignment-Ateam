@@ -10,6 +10,7 @@ interface IMarkColors {
 }
 interface Props {
   items: string[]
+  defaultItem?: string
   onItemChange: (itemValue: string) => void
   size?: 'normal' | 'big'
   unbordered?: boolean
@@ -17,8 +18,16 @@ interface Props {
   children?: ReactNode
 }
 
-const Dropdown = ({ children, items, onItemChange, size = 'normal', unbordered = false, markColors = {} }: Props) => {
-  const [selectedItem, setSelectedItem] = useState(items[0])
+const Dropdown = ({
+  children,
+  items,
+  defaultItem,
+  onItemChange,
+  size = 'normal',
+  unbordered = false,
+  markColors = {},
+}: Props) => {
+  const [selectedItem, setSelectedItem] = useState(defaultItem ?? items[0])
   const [isSelected, setIsSelected] = useState(false)
   const [showList, toggleShowList, , closeList] = useToggle()
   const clickAwayRef = useRef(null)

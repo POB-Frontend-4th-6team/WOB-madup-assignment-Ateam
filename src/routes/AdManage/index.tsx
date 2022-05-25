@@ -1,12 +1,15 @@
-import styles from './adManage.module.scss'
-
+import { useState } from 'react'
 import { useAppDispatch } from 'hooks'
 import { setStatusOption } from 'states/ad'
 
 import { setModal } from 'states/modal'
 
+import { useMount } from 'react-use'
 import ContentsContainer from 'routes/_components/ContentsContainer'
 import Dropdown from 'routes/_components/Dropdown'
+import Loading from 'routes/_components/Loading'
+
+import styles from './adManage.module.scss'
 import CardList from './CardList'
 import Modal from 'routes/_components/Modal/ModalFrame'
 import CardModalContents from './CardModalContents'
@@ -15,6 +18,7 @@ let DROPDOWN_ITEMS = ['전체보기', '진행중', '종료']
 
 const AdManage = () => {
   const dispatch = useAppDispatch()
+  const [isLoading, setIsLoading] = useState(false)
 
   const dispatchCurrentAdState = (item: string) => {
     if (item === '전체보기') {
@@ -30,6 +34,14 @@ const AdManage = () => {
   }
 
   const handleModalOpen = () => dispatch(setModal(true))
+
+  useMount(() => {
+    setIsLoading(true)
+    const timeout = setTimeout(() => setIsLoading(false), 1000)
+    return () => clearTimeout(timeout)
+  })
+
+  if (isLoading) return <Loading size='100px' />
 
   return (
     <div className={styles.container}>
