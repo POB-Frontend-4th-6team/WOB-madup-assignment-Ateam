@@ -3,9 +3,14 @@ const CHART_STYLE = {
     style: {
       data: { stroke: '#FFFFFF', strokeWidth: 1 },
     },
-    barWidth: 30,
+    barWidth: 40,
     x: 'category',
     y: 'value',
+  },
+  tick: {
+    style: {
+      tickLabels: { fontSize: 12, fill: '#94a2ad' },
+    },
   },
 }
 

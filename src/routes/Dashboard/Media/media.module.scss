@@ -18,6 +18,13 @@
     }
   }
 
+  .legendContainer {
+    display: flex;
+    justify-content: flex-end;
+    max-width: 1500px;
+    margin: 20px 0;
+  }
+
   .tableContainer {
     overflow-x: scroll;
 

@@ -1,6 +1,14 @@
 import { ReactNode } from 'react'
 import { useEffect, useRef, useState } from 'hooks'
-import { VictoryChart, VictoryAxis, VictoryStack, VictoryBar, VictoryTheme, VictoryContainer } from 'victory'
+import {
+  VictoryChart,
+  VictoryAxis,
+  VictoryStack,
+  VictoryBar,
+  VictoryTheme,
+  VictoryContainer,
+  VictoryLegend,
+} from 'victory'
 
 import styles from './media.module.scss'
 import { getMediaChartData, getMediaTableData } from 'services/media'
@@ -11,7 +19,7 @@ function getSize() {
   let width
 
   if (window.innerWidth >= 1800) {
-    width = 1600
+    width = 1500
   } else if (window.innerWidth < 1800 && window.innerWidth > 768) {
     width = 1000
   } else {
@@ -61,7 +69,16 @@ const ResponsiveVictoryChart = ({ children }: IVictoryChart) => {
 const Media = () => {
   const tickFormat = ['광고비', '매출', '노출 수', '클릭 수', '전환 수']
   const tableHead = ['광고비', '매출', 'ROAS', '노출 수', '클릭 수', '클릭률 (CTR)', '클릭당 비용 (CPC)']
-  const mediaNames = ['google', 'facebook', 'naver', 'kakao']
+  const mediaInfo = [
+    { name: 'google', krName: '구글', color: '#AC8AF8' },
+    { name: 'facebook', krName: '페이스북', color: '#85DA47' },
+    { name: 'naver', krName: '네이버', color: '#4FADF7' },
+    { name: 'kakao', krName: '카카오', color: '#FFEB00' },
+  ]
+  const mediaColor = mediaInfo.map((v) => v.color)
+  const legendData = mediaInfo.map((v) => {
+    return { name: v.krName, symbol: { fill: v.color } }
+  })
 
   const { mediaPerData } = getMediaChartData()
   const { mediaData, totalData } = getMediaTableData()
@@ -71,9 +88,9 @@ const Media = () => {
       <div className={styles.container}>
         <div className={styles.chartContainer}>
           <ResponsiveVictoryChart>
-            <VictoryAxis tickValues={tickFormat} tickFormat={tickFormat} />
-            <VictoryAxis dependentAxis tickFormat={(x) => `${x}`} />
-            <VictoryStack colorScale={['#AC8AF8', '#85DA47', '#4FADF7', '#FFEB00']}>
+            <VictoryAxis tickValues={tickFormat} tickFormat={tickFormat} {...CHART_STYLE.tick} />
+            <VictoryAxis dependentAxis tickFormat={(x) => `${x}%`} {...CHART_STYLE.tick} />
+            <VictoryStack colorScale={mediaColor}>
               <VictoryBar data={mediaPerData.google} {...CHART_STYLE.bar} />
               <VictoryBar data={mediaPerData.naver} {...CHART_STYLE.bar} />
               <VictoryBar data={mediaPerData.facebook} {...CHART_STYLE.bar} />
@@ -81,7 +98,20 @@ const Media = () => {
             </VictoryStack>
           </ResponsiveVictoryChart>
         </div>
-
+        <div className={styles.legendContainer}>
+          <VictoryLegend
+            width={350}
+            height={50}
+            orientation='horizontal'
+            theme={VictoryTheme.material}
+            style={{
+              labels: { fontSize: 14, fill: '#94A2AD' },
+            }}
+            gutter={50}
+            data={legendData}
+            containerComponent={<VictoryContainer responsive={false} />}
+          />
+        </div>
         <div className={styles.tableContainer}>
           <table>
             <thead>
@@ -94,12 +124,12 @@ const Media = () => {
               </tr>
             </thead>
             <tbody>
-              {mediaNames.map((name, nameIdx) => {
-                const trKey = `tr-key-${nameIdx}`
+              {mediaInfo.map((media, mediaIdx) => {
+                const trKey = `tr-key-${mediaIdx}`
                 return (
                   <tr key={trKey}>
-                    <th>{name}</th>
-                    {mediaData[name].map((item, itemIdx) => {
+                    <th>{media.krName}</th>
+                    {mediaData[media.name].map((item, itemIdx) => {
                       const tdKey = `td-key-${itemIdx}`
                       return <td key={tdKey}>{Number(item.value.toFixed(2)).toLocaleString()}</td>
                     })}
