@@ -1,17 +1,23 @@
 import DATA from '../assets/svgs/jsons/admanagement.json'
 
-const ALL_DATA = DATA.ads
+import store from 'store'
+
+const RES = store.get('adList')
 
 export const fetchAllAd = () => {
   return DATA.ads
 }
 
-export const fetchOnlyActiveAd = () => {
-  return ALL_DATA.filter((ad) => ad.status === 'active')
+export const fetchAllAdFromStorage = () => {
+  return RES
 }
 
-export const fetchOnlyEndedAd = () => {
-  return ALL_DATA.filter((ad) => ad.status === 'ended')
+export const fetchOnlyActiveAdFromStorage = () => {
+  return RES.filter((ad: any) => ad.status === 'active')
+}
+
+export const fetchOnlyEndedAdFromStorage = () => {
+  return RES.filter((ad: any) => ad.status === 'ended')
 }
 
 export const sortWebAndAppAd = (type: string, title: string) => {
@@ -48,13 +54,14 @@ export const startDate = (start: string, end: string | null) => {
 }
 
 export const dayBudget = (props: number) => {
-  const result = props.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
-  if (result.slice(-1) === ',') {
-    return result.slice(0, -4)
-  }
-  return result.slice(0, -5)
+  const result = props.toLocaleString()
+
+  return `${result}원`
 }
 
 export const totalSales = (roas: number, cost: number) => {
-  return (roas * cost) / 100
+  const total = (roas * cost) / 100
+  const noDecimal = Math.round(total)
+
+  return `${noDecimal.toLocaleString()}원`
 }
