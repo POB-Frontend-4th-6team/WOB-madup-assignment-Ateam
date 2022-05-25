@@ -1,0 +1,57 @@
+@use '/src/styles/mixins/flexbox';
+
+$FONT_WEIGHT: 500;
+$DT_FONT_COLOR: #94a2ad;
+
+@mixin adInfo($widthPercentage) {
+  float: left;
+  width: $widthPercentage;
+  padding: 5px;
+  margin: 8px 0;
+  border-bottom: 1.5px solid #ebeff1;
+}
+
+@mixin borderColorAndRadius($borderColor) {
+  border: 1px solid $borderColor;
+  border-radius: 10px;
+}
+
+.cardContainer {
+  @include flexbox.flexbox(start, start);
+  @include borderColorAndRadius(#d1d8dc);
+  flex-direction: column;
+  width: 270px;
+  height: 400px;
+  padding: 30px;
+  margin-top: 50px;
+  margin-right: 20px;
+}
+
+.cardHeader {
+  font-size: 15px;
+  font-weight: $FONT_WEIGHT;
+}
+
+dl {
+  width: 100%;
+  margin-top: 20px;
+  font-size: 12px;
+}
+
+dt {
+  @include adInfo(40%);
+  color: $DT_FONT_COLOR;
+}
+
+dd {
+  @include adInfo(60%);
+  font-weight: $FONT_WEIGHT;
+}
+
+.editButton {
+  width: 100px;
+  height: 50px;
+  margin-top: 20px;
+  font-weight: $FONT_WEIGHT;
+  @include borderColorAndRadius(#d1d8dc);
+}
