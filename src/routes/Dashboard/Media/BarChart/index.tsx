@@ -35,9 +35,7 @@ const BarChart = ({ mediaLabelList, TimeList }: IMediaInfo) => {
     run()
   }, [run])
 
-  if (!ready) {
-    return <div />
-  }
+  if (!ready) return <div />
 
   return (
     <article>
