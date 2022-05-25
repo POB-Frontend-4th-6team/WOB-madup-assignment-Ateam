@@ -1,5 +1,5 @@
 import styles from './totalAd.module.scss'
-import { VictoryChart, VictoryLine, VictoryAxis, VictoryVoronoiContainer } from 'victory'
+import { VictoryChart, VictoryLine, VictoryAxis, VictoryVoronoiContainer, VictoryTooltip } from 'victory'
 import trendData from 'assets/jsons/trend-data-set.json'
 import dayjs from 'dayjs'
 import { useAppSelector } from 'hooks'
@@ -53,7 +53,19 @@ const AdChart = ({ Selected, Selected2, val, dayOrWeek }: Props) => {
     else setDataList2(VictioryLineData)
   }, [timeList, val, VictioryLineData])
 
-  const choiceWeek = useCallback(() => {}, [])
+  const choiceWeek = useCallback(() => {
+    if (dataList) {
+      // let sum = 0
+      // const arr = []
+      // for (let i = 0; i < dataList.length; i += 1) {
+      //   if (i % 7 === 0 && i !== 0) {
+      //     arr.push(sum / 7)
+      //     sum = 0
+      //   }
+      // }
+      console.log(1)
+    }
+  }, [dataList])
 
   const choiceDay = useCallback(() => {}, [])
 
@@ -64,30 +76,43 @@ const AdChart = ({ Selected, Selected2, val, dayOrWeek }: Props) => {
 
   return (
     <div className={styles.mainChart}>
-      <VictoryChart
-        width={1440}
-        height={500}
-        containerComponent={<VictoryVoronoiContainer labels={(d) => `${d.x}, ${d.y}`} />}
-      >
+      <VictoryChart width={1440} height={500} containerComponent={<VictoryVoronoiContainer responsive={false} />}>
         <VictoryAxis
           tickFormat={timeList.map((date) => {
             const arr = date.split('-')
             return `${arr[1]}월${arr[2]}일`
           })}
-          style={{ tickLabels: { fontSize: 18 } }}
+          style={{ tickLabels: { fontSize: 14 } }}
         />
+
         {dataList?.length !== 0 &&
           (Selected === 'ROAS' ? (
             <VictoryAxis
               dependentAxis
-              style={{ grid: { stroke: 'lightGrey' }, tickLabels: { fontSize: 18 } }}
+              style={{ grid: { stroke: 'lightGrey' }, tickLabels: { fontSize: 14 } }}
               tickFormat={(y) => `${y}%`}
             />
           ) : (
             <VictoryAxis
               dependentAxis
-              style={{ grid: { stroke: 'lightGrey' }, tickLabels: { fontSize: 18 } }}
+              style={{ grid: { stroke: 'lightGrey' }, tickLabels: { fontSize: 14 } }}
               tickFormat={(y) => y}
+            />
+          ))}
+        {dataList2?.length !== 0 &&
+          (Selected2 === 'ROAS' ? (
+            <VictoryAxis
+              dependentAxis
+              style={{ grid: { stroke: 'lightGrey' }, tickLabels: { fontSize: 14 } }}
+              tickFormat={(y) => `${y}%`}
+              orientation='right'
+            />
+          ) : (
+            <VictoryAxis
+              dependentAxis
+              style={{ grid: { stroke: 'lightGrey' }, tickLabels: { fontSize: 14 } }}
+              tickFormat={(y) => y / 100}
+              orientation='right'
             />
           ))}
 
@@ -99,6 +124,8 @@ const AdChart = ({ Selected, Selected2, val, dayOrWeek }: Props) => {
             },
           }}
           data={dataList}
+          labels={({ datum }) => datum.y}
+          labelComponent={<VictoryTooltip />}
         />
         {dataList2 && (
           <VictoryLine
@@ -109,45 +136,13 @@ const AdChart = ({ Selected, Selected2, val, dayOrWeek }: Props) => {
               },
             }}
             data={dataList2}
+            labels={({ datum }) => datum.y}
+            labelComponent={<VictoryTooltip />}
           />
         )}
-        {dataList2?.length !== 0 &&
-          (Selected2 === 'ROAS' ? (
-            <VictoryAxis
-              dependentAxis
-              style={{ grid: { stroke: 'lightGrey' }, tickLabels: { fontSize: 18 } }}
-              tickFormat={(y) => `${y}%`}
-              orientation='right'
-            />
-          ) : (
-            <VictoryAxis
-              dependentAxis
-              style={{ grid: { stroke: 'lightGrey' }, tickLabels: { fontSize: 18 } }}
-              tickFormat={(y) => y}
-              orientation='right'
-            />
-          ))}
       </VictoryChart>
     </div>
   )
 }
 
 export default AdChart
-
-//   console.log(box)
-
-//   let sum = 0
-//   const arr = []
-//   const MaxCnt = box.length % 7
-
-//   let nowCnt = 1
-//   for (let i = 0; i < box.length; i += 1) {
-//     if (nowCnt === MaxCnt && i === box.length - 1) console.log(sum)
-//     if (i % 7 === 0 && i !== 0) {
-//       arr.push(sum / 7)
-//       sum = 0
-//       nowCnt += 1
-//     }
-//     sum += box[i].y
-//   }
-//   console.log(arr)
