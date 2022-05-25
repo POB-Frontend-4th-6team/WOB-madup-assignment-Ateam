@@ -52,7 +52,7 @@ const TotalAd = () => {
   )
 
   return (
-    <>
+    <section>
       <div className={styles.titleBox}>
         <p className={styles.title}>통합 광고 현황</p>
       </div>
@@ -70,7 +70,7 @@ const TotalAd = () => {
           <AdChart Selected={Selected} Selected2={Selected2} val={val} dayOrWeek={dayOrWeek} />
         </div>
       </ContentsContainer>
-    </>
+    </section>
   )
 }
 
