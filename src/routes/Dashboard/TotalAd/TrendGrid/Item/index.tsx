@@ -4,8 +4,8 @@ import styles from './item.module.scss'
 interface Props {
   isIncreased: boolean
   name: string
-  value: number
-  diff: number
+  value: string
+  diff: string
 }
 
 const Item = ({ isIncreased, name, value, diff }: Props): JSX.Element => {

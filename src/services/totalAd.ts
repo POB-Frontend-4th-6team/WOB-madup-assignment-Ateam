@@ -5,12 +5,6 @@ import BigNumber from 'bignumber.js'
 
 import { getSales } from 'utils/math'
 
-// const subtractStringDate = (fromDate: string, subtractDate: string) => {
-//   const fromDateTime = new Date(fromDate).getTime()
-//   const subtractDateTime = new Date(subtractDate).getTime()
-//   const result = new Date(fromDateTime - subtractDateTime).toLocaleDateString()
-// }
-
 const isBetweenDate = (target: Date, startDate: Date, endDate: Date) => {
   startDate.setHours(0, 0, 0, 0)
   target.setHours(0, 0, 0, 0)
@@ -35,6 +29,7 @@ const addAll = (datas: IDailyItem[]) => {
     imp: new BigNumber(0),
     roas: new BigNumber(0),
   }
+
   const sum = datas.reduce((acc, data) => {
     acc.click = acc.click.plus(data.click)
     acc.conv = acc.conv.plus(data.conv)
@@ -62,7 +57,9 @@ const addAll = (datas: IDailyItem[]) => {
     roas: sum.roas.toNumber(),
     sales: 0,
   }
+
   result.sales = new BigNumber(getSales(result.roas, result.cost)).integerValue().toNumber()
+
   return result
 }
 
@@ -70,6 +67,7 @@ const getTrendDatas = (startDate: Date, endDate: Date) => {
   const datas = (trendData as ITrendData).report.daily.filter((data) =>
     isBetweenDate(new Date(data.date), startDate, endDate)
   )
+
   return addAll(datas)
 }
 
@@ -81,6 +79,7 @@ const getPrevTrendDatas = (startDate: Date, endDate: Date) => {
   if (diff === 0) return getTrendDatas(oneDayBeforeStart.toDate(), oneDayBeforeStart.toDate())
 
   const prevStartDay = dayjs(oneDayBeforeStart.valueOf() - diff)
+
   return getTrendDatas(prevStartDay.toDate(), oneDayBeforeStart.toDate())
 }
 
