@@ -1,6 +1,7 @@
-import styles from './mediaTable.module.scss'
 import { IMediaInfo } from 'types/media'
 import { getMediaTableData } from 'services/media'
+
+import styles from './mediaTable.module.scss'
 
 const tableHead = ['광고비', '매출', 'ROAS', '노출 수', '클릭 수', '클릭률 (CTR)', '클릭당 비용 (CPC)']
 

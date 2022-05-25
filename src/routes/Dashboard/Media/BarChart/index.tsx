@@ -8,10 +8,11 @@ import {
   VictoryTooltip,
 } from 'victory'
 
-import styles from './barChart.module.scss'
-import CHART_STYLE from './chartStyle'
 import { IMediaInfo } from 'types/media'
 import { getMediaChartData } from 'services/media'
+
+import styles from './barChart.module.scss'
+import CHART_STYLE from './chartStyle'
 import ResponsiveVictoryChart from './ResponsiveVictoryChart'
 
 const tickFormat = ['광고비', '매출', '노출 수', '클릭 수', '전환 수']

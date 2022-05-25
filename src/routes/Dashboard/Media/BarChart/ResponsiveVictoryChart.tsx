@@ -1,8 +1,8 @@
 import { ReactNode, useRef } from 'react'
+import { round } from 'lodash'
+import { VictoryChart, VictoryTheme, VictoryTooltip, VictoryVoronoiContainer } from 'victory'
 
 import { useEffect, useState } from 'hooks'
-import { VictoryChart, VictoryTheme, VictoryTooltip, VictoryVoronoiContainer } from 'victory'
-import { round } from 'lodash'
 
 const getSize = () => {
   let width
@@ -38,7 +38,24 @@ const ResponsiveVictoryChart = ({ children }: IVictoryChart) => {
   const ref = useRef<HTMLDivElement>(null)
   const { width } = useSize()
 
-  const props = {
+  const containerComponent = (
+    <VictoryVoronoiContainer
+      labels={({ datum }) => {
+        return `${round(datum.value, 2)}`
+      }}
+      responsive={false}
+      labelComponent={
+        <VictoryTooltip
+          style={{ fill: 'white', fontSize: 14 }}
+          flyoutStyle={{ fill: '#3a474e' }}
+          flyoutHeight={40}
+          flyoutPadding={20}
+        />
+      }
+    />
+  )
+
+  const chartProps = {
     children,
     width,
   }
@@ -48,23 +65,8 @@ const ResponsiveVictoryChart = ({ children }: IVictoryChart) => {
       <VictoryChart
         theme={VictoryTheme.material}
         domainPadding={{ x: 100, y: 0 }}
-        {...props}
-        containerComponent={
-          <VictoryVoronoiContainer
-            labels={({ datum }) => {
-              return `${round(datum.value, 2)}`
-            }}
-            responsive={false}
-            labelComponent={
-              <VictoryTooltip
-                style={{ fill: 'white', fontSize: 14 }}
-                flyoutStyle={{ fill: '#3a474e' }}
-                flyoutHeight={40}
-                flyoutPadding={20}
-              />
-            }
-          />
-        }
+        containerComponent={containerComponent}
+        {...chartProps}
       />
     </div>
   )
