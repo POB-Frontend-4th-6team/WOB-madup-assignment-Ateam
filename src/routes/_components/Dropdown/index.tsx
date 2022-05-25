@@ -1,4 +1,4 @@
-import { MouseEvent, useEffect, useRef, useState } from 'react'
+import { MouseEvent, ReactNode, useEffect, useRef, useState } from 'react'
 import { DropdownIcon } from 'assets/svgs'
 import { cx } from 'styles'
 import { useClickAway } from 'react-use'
@@ -18,9 +18,10 @@ interface Props {
   size?: 'normal' | 'big'
   unbordered?: boolean
   markColors?: IMarkColors
+  children?: ReactNode
 }
 
-const Dropdown = ({ items, onItemChange, size = 'normal', unbordered = false, markColors = {} }: Props) => {
+const Dropdown = ({ children, items, onItemChange, size = 'normal', unbordered = false, markColors = {} }: Props) => {
   const [selectedItem, setSelectedItem] = useState(items[0])
   const [isSelected, setIsSelected] = useState(false)
   const [showList, toggleShowList, , closeList] = useToggle()
@@ -65,6 +66,7 @@ const Dropdown = ({ items, onItemChange, size = 'normal', unbordered = false, ma
             <p>{item}</p>
           </li>
         ))}
+        {children && <li role='row'>{children}</li>}
       </ul>
     </div>
   )
