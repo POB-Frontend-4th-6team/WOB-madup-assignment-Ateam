@@ -7,7 +7,7 @@
   padding: 25px;
   background-color: colors.$WHITE;
   border-radius: 20px;
-  box-shadow: 0 4px 10 0 rgba($color: colors.$BLACK, $alpha: 4%);
+  box-shadow: colors.$CONTENTS_BOX_SHADOW 0 8px 24px;
 
   @include responsive.after(SD) {
     padding: 40px;
