@@ -64,7 +64,7 @@ const TotalAd = () => {
             <Dropdown items={DropDownList} onItemChange={onClick1} markColors={MARK_COLORS} />
             <Dropdown items={DropDownList2} onItemChange={onClick2} markColors={MARK_COLORS} />
           </div>
-          <Dropdown items={['일간', '주간']} onItemChange={onDayOrWeek} size='normal' />
+          <Dropdown items={['일간', '주간']} onItemChange={onDayOrWeek} size='normal' unbordered />
         </div>
         <AdChart Selected={Selected} Selected2={Selected2} val={val} dayOrWeek={dayOrWeek} />
       </ContentsContainer>
