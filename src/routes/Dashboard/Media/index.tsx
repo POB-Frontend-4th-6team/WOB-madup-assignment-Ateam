@@ -13,7 +13,7 @@ function getSize() {
   if (window.innerWidth >= 1800) {
     width = 1600
   } else if (window.innerWidth < 1800 && window.innerWidth > 768) {
-    width = 1200
+    width = 1000
   } else {
     width = 700
   }
@@ -73,19 +73,13 @@ const Media = () => {
           <ResponsiveVictoryChart>
             <VictoryAxis tickValues={tickFormat} tickFormat={tickFormat} />
             <VictoryAxis dependentAxis tickFormat={(x) => `${x}`} />
-            <VictoryStack
-              colorScale={['#AC8AF8', '#85DA47', '#4FADF7', '#FFEB00']}
-              style={{
-                data: { stroke: '#FFFFFF', strokeWidth: 1 },
-              }}
-            >
+            <VictoryStack colorScale={['#AC8AF8', '#85DA47', '#4FADF7', '#FFEB00']}>
               <VictoryBar data={mediaPerData.google} {...CHART_STYLE.bar} />
               <VictoryBar data={mediaPerData.naver} {...CHART_STYLE.bar} />
               <VictoryBar data={mediaPerData.facebook} {...CHART_STYLE.bar} />
-              <VictoryBar data={mediaPerData.kakao} {...CHART_STYLE.bar} />
+              <VictoryBar data={mediaPerData.kakao} {...CHART_STYLE.bar} cornerRadius={{ top: 6 }} />
             </VictoryStack>
           </ResponsiveVictoryChart>
-          {/* </VictoryChart> */}
         </div>
 
         <div className={styles.tableContainer}>
