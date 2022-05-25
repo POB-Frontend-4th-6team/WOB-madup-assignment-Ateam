@@ -1,11 +1,15 @@
 import { configureStore } from '@reduxjs/toolkit'
 import sidebar from './sidebar'
-import totalAd from './totalAd'
+import time from './time'
+import startdate from './startdate'
+import enddate from './enddate'
 
 export const store = configureStore({
   reducer: {
     sidebar,
-    totalAd,
+    time,
+    startdate,
+    enddate,
   },
   devTools: process.env.NODE_ENV !== 'production',
   middleware: (getDefaultMiddleware) => getDefaultMiddleware({ serializableCheck: false }),

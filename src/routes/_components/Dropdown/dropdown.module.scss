@@ -1,5 +1,105 @@
+@use '/src/styles/mixins/flexbox';
+@use '/src/styles/mixins/position';
+@use '/src/styles/constants/levels';
+@use '/src/styles/constants/colors';
+
 .container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  position: relative;
+  width: 123px;
+  height: 40px;
+  user-select: none;
+
+  ul {
+    display: none;
+  }
+
+  ul.show {
+    position: absolute;
+    top: 43px;
+    z-index: levels.$DROPDOWN_ITEMS;
+    display: block;
+    width: 100%;
+    max-height: 200px;
+    padding: 0 20px;
+    overflow-y: auto;
+    background-color: colors.$DROPDOWN_BACKGROUND;
+    border: 1px solid colors.$DROPDOWN_BORDER;
+    border-radius: 10px;
+
+    li {
+      @include flexbox.flexbox(start, center);
+      padding: 12px 0;
+      cursor: pointer;
+
+      p {
+        font-size: 14px;
+      }
+    }
+  }
+
+  button {
+    @include flexbox.flexbox(start, center);
+    z-index: levels.$DROPDOWN_BUTTON;
+    width: 100%;
+    height: 100%;
+    padding: 0 16px 0 20px;
+    color: colors.$DROPDOWN_FONT;
+    background-color: colors.$DROPDOWN_BACKGROUND;
+    border: 1px solid #d1d8dc;
+    border-radius: 10px;
+
+    p {
+      flex-grow: 1;
+      overflow: hidden;
+      font-size: 14px;
+      text-align: left;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .dropdownIconBox {
+      @include flexbox.flexbox(center, center);
+      height: 100%;
+
+      path {
+        width: 12px;
+        height: 8px;
+        fill: colors.$DROPDOWN_FONT;
+      }
+    }
+  }
+
+  .marker {
+    width: 10px;
+    height: 10px;
+    margin-right: 10px;
+    border-radius: 50%;
+  }
+
+  button.unbordered {
+    border: none;
+  }
+}
+
+.container.big {
+  width: 240px;
+  height: 60px;
+
+  button > p {
+    font-size: 16px;
+    font-weight: bold;
+  }
+
+  ul {
+    top: 63px;
+    padding: 0 20px;
+
+    li {
+      padding: 16px 0;
+
+      p {
+        font-size: 16px;
+      }
+    }
+  }
 }

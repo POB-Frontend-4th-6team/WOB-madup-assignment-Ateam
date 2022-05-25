@@ -1,23 +1,24 @@
 import { ko } from 'date-fns/esm/locale'
 import { VectorImage } from 'assets/svgs'
 import DatePicker from 'react-datepicker'
-import { useState, useEffect } from 'react'
-import styles from './totalAd.module.scss'
-
+import { useEffect } from 'react'
+import styles from './dashboard.module.scss'
 import 'react-datepicker/dist/react-datepicker.css'
-import { useAppDispatch } from 'hooks'
-import { setTickFormat } from 'states/totalAd'
+import { useAppDispatch, useAppSelector } from 'hooks'
+import { setTimeListFormat } from 'states/time'
+import { getStartDate, setStartDate } from 'states/startdate'
+import { getEndDate, setEndDate } from 'states/enddate'
 
-const AdHeader = () => {
+const DashHeader = () => {
   const dispatch = useAppDispatch()
 
-  const [startDate, setStartDate] = useState(new Date())
-  const [endDate, setEndDate] = useState(new Date(new Date().setDate(new Date().getDate() + 7))) // 오늘 날짜에서 +7
+  const startDate = useAppSelector(getStartDate)
+  const endDate = useAppSelector(getEndDate)
 
   const onChange = (dates: any) => {
     const [start, end] = dates
-    setStartDate(start)
-    setEndDate(end)
+    dispatch(setStartDate(start))
+    dispatch(setEndDate(end))
   }
 
   useEffect(() => {
@@ -38,7 +39,7 @@ const AdHeader = () => {
       box.push(`${year}-${month}-${start}`)
       start += 1
     }
-    dispatch(setTickFormat(box))
+    dispatch(setTimeListFormat(box))
     box = []
   }, [startDate, endDate, dispatch])
 
@@ -65,4 +66,4 @@ const AdHeader = () => {
   )
 }
 
-export default AdHeader
+export default DashHeader

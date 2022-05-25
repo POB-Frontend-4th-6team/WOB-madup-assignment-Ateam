@@ -8,11 +8,11 @@ body {
 
 .app {
   height: 100vh;
-  margin-top: 80px;
+  padding-top: 60px;
   margin-left: 0;
   background: colors.$MAIN_BG;
 
   @include responsive.after(SD) {
-    margin-left: 320px;
+    margin-left: 280px;
   }
 }
