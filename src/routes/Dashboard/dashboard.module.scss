@@ -8,7 +8,6 @@
 
   .header {
     @include flexbox.flexbox(between, center);
-    width: 100%;
     height: 60px;
     padding: 0 30px;
 
