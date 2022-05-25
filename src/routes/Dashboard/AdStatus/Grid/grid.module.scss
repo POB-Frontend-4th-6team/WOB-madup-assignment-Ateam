@@ -1,0 +1,13 @@
+@use '/src/styles/mixins/responsive';
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 20px;
+  width: 100%;
+  overflow-x: scroll;
+
+  @include responsive.after(LD) {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
