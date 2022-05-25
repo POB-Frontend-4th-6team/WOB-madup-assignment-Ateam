@@ -40,9 +40,7 @@ const ResponsiveVictoryChart = ({ children }: IVictoryChart) => {
 
   const containerComponent = (
     <VictoryVoronoiContainer
-      labels={({ datum }) => {
-        return `${round(datum.value, 2)}`
-      }}
+      labels={({ datum }) => `${round(datum.value, 2)}`}
       responsive={false}
       labelComponent={
         <VictoryTooltip
