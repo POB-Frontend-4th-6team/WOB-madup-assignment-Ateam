@@ -1,4 +1,5 @@
 import DATA from '../assets/svgs/jsons/admanagement.json'
+import { advertisementCardType } from 'types/ad'
 
 import store from 'store'
 
@@ -13,11 +14,11 @@ export const fetchAllAdFromStorage = () => {
 }
 
 export const fetchOnlyActiveAdFromStorage = () => {
-  return RES.filter((ad: any) => ad.status === 'active')
+  return RES.filter((ad: advertisementCardType) => ad.status === 'active')
 }
 
 export const fetchOnlyEndedAdFromStorage = () => {
-  return RES.filter((ad: any) => ad.status === 'ended')
+  return RES.filter((ad: advertisementCardType) => ad.status === 'ended')
 }
 
 export const sortWebAndAppAd = (type: string, title: string) => {

@@ -1,53 +1,57 @@
 import styles from './cardModalContents.module.scss'
 import store from 'store'
 
-import { useState } from 'hooks'
+import { setModal } from 'states/modal'
+import { useAppDispatch, useState } from 'hooks'
+import { ChangeEvent } from 'react'
 
 const CardModalContents = () => {
   const [adTypeState, setAdTypeState] = useState('')
   const [titleState, setTitleState] = useState('web')
-  const [budgetState, setBudgetState] = useState<number>()
+  const [budgetState, setBudgetState] = useState<number>(0)
   const [statusState, setStatusState] = useState('active')
   const [startDateState, setStartDateState] = useState('')
   const [endDateState, setEndDateState] = useState('')
-  const [costState, setCostState] = useState<number>()
-  const [convValueState, setConvValueState] = useState<number>()
-  const [roasState, setRoasState] = useState<number>()
+  const [costState, setCostState] = useState<number>(0)
+  const [convValueState, setConvValueState] = useState<number>(0)
+  const [roasState, setRoasState] = useState<number>(0)
 
-  const handleType = (e: any) => {
+  const dispatch = useAppDispatch()
+
+  const handleType = (e: ChangeEvent<HTMLSelectElement>) => {
     setAdTypeState(e.currentTarget.value)
   }
 
-  const handleTitle = (e: any) => {
+  const handleTitle = (e: ChangeEvent<HTMLInputElement>) => {
     setTitleState(e.currentTarget.value)
   }
 
-  const handleBudgetValue = (e: any) => {
-    setBudgetState(e.currentTarget.value)
+  const handleBudgetValue = (e: ChangeEvent<HTMLInputElement>) => {
+    setBudgetState(Number(e.currentTarget.value))
   }
 
-  const handleStatus = (e: any) => {
+  const handleStatus = (e: ChangeEvent<HTMLSelectElement>) => {
     setStatusState(e.currentTarget.value)
   }
 
-  const handleStartDate = (e: any) => {
+  const handleStartDate = (e: ChangeEvent<HTMLInputElement>) => {
     setStartDateState(e.currentTarget.value)
   }
 
-  const handleEndDate = (e: any) => {
+  const handleEndDate = (e: ChangeEvent<HTMLInputElement>) => {
     setEndDateState(e.currentTarget.value)
   }
 
-  const handleCostValue = (e: any) => {
-    setCostState(e.currentTarget.value)
+  const handleCostValue = (e: ChangeEvent<HTMLInputElement>) => {
+    setCostState(Number(e.currentTarget.value))
   }
 
-  const handleConvValue = (e: any) => {
-    setConvValueState(e.currentTarget.value)
+  const handleConvValue = (e: ChangeEvent<HTMLInputElement>) => {
+    setConvValueState(Number(e.currentTarget.value))
   }
 
-  const handleRoasValue = (e: any) => {
-    setRoasState(e.currentTarget.value)
+  const handleRoasValue = (e: ChangeEvent<HTMLInputElement>) => {
+    setRoasState(Number(e.currentTarget.value))
   }
 
   const handleAddNewCard = () => {
@@ -69,6 +73,8 @@ const CardModalContents = () => {
 
     const newItems = [...res, newItem]
     store.set('adList', newItems)
+
+    dispatch(setModal(false))
   }
 
   return (
@@ -79,14 +85,14 @@ const CardModalContents = () => {
           <option value='app'>App</option>
         </select>
         <input onChange={handleTitle} type='text' placeholder='Title' />
-        <input onChange={handleBudgetValue} type='text' placeholder='Budget' />
+        <input onChange={handleBudgetValue} type='number' placeholder='Budget' />
         <select onChange={handleStatus}>
           <option value='active'>진행중</option>
           <option value='ended'>종료</option>
         </select>
         <input onChange={handleStartDate} type='text' placeholder='Start Date : YYYY-MM-DD' />
         {statusState === 'ended' && <input onChange={handleEndDate} type='text' placeholder='End Date : YYYY-MM-DD' />}
-        <input onChange={handleCostValue} type='text' placeholder='Cost' />
+        <input onChange={handleCostValue} type='number' placeholder='Cost' />
         <input onChange={handleConvValue} type='text' placeholder='ConValue' />
         <input onChange={handleRoasValue} type='text' placeholder='Roas' />
       </form>
