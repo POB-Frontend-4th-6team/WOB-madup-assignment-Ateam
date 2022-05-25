@@ -5,6 +5,7 @@ import Dropdown from 'routes/_components/Dropdown'
 import { getTimeListFormat } from 'states/time'
 import AdChart from './adChart'
 import styles from './totalAd.module.scss'
+import TrendGrid from './TrendGrid'
 
 const defaultArr = ['매드업', 'ROAS', '광고비', '노출 수', '클릭 수', '전환 수', '매출']
 const MARK_COLORS = {
@@ -55,7 +56,9 @@ const TotalAd = () => {
     <section className={styles.totalAd}>
       <h2 className={styles.title}>통합 광고 현황</h2>
       <ContentsContainer>
-        <div className={styles.mainCard}>{/* grid */}</div>
+        <div className={styles.mainCard}>
+          <TrendGrid />
+        </div>
         <div className={styles.dropDownBox}>
           <div className={styles.dropDowns}>
             <Dropdown items={DropDownList} onItemChange={onClick1} markColors={MARK_COLORS} />

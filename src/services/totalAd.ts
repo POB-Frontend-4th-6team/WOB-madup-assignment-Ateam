@@ -11,10 +11,14 @@ import { getSales } from 'utils/math'
 //   const result = new Date(fromDateTime - subtractDateTime).toLocaleDateString()
 // }
 
-const isBetweenStringDate = (target: string, startDate: string, endDate: string) => {
-  const startDateTime = new Date(startDate).getTime()
-  const targetDateTime = new Date(target).getTime()
-  const endDateTime = new Date(endDate).getTime()
+const isBetweenDate = (target: Date, startDate: Date, endDate: Date) => {
+  startDate.setHours(0, 0, 0, 0)
+  target.setHours(0, 0, 0, 0)
+  endDate.setHours(0, 0, 0, 0)
+  const startDateTime = startDate.getTime()
+  const targetDateTime = target.getTime()
+  const endDateTime = endDate.getTime()
+
   return startDateTime <= targetDateTime && targetDateTime <= endDateTime
 }
 
@@ -62,23 +66,22 @@ const addAll = (datas: IDailyItem[]) => {
   return result
 }
 
-const getTrendDatas = (startDate: string, endDate: string) => {
+const getTrendDatas = (startDate: Date, endDate: Date) => {
   const datas = (trendData as ITrendData).report.daily.filter((data) =>
-    isBetweenStringDate(data.date, startDate, endDate)
+    isBetweenDate(new Date(data.date), startDate, endDate)
   )
   return addAll(datas)
 }
 
-const getPrevTrendDatas = (startDate: string, endDate: string) => {
-  const diff = new Date(endDate).getTime() - new Date(startDate).getTime()
+const getPrevTrendDatas = (startDate: Date, endDate: Date) => {
+  const diff = endDate.getTime() - startDate.getTime()
   const startDay = dayjs(startDate)
   const oneDayBeforeStart = startDay.subtract(1, 'day')
-  const oneDayBeforeStartString = oneDayBeforeStart.format('YYYY-MM-DD')
 
-  if (diff === 0) return getTrendDatas(oneDayBeforeStartString, oneDayBeforeStartString)
+  if (diff === 0) return getTrendDatas(oneDayBeforeStart.toDate(), oneDayBeforeStart.toDate())
 
   const prevStartDay = dayjs(oneDayBeforeStart.valueOf() - diff)
-  return getTrendDatas(prevStartDay.format('YYYY-MM-DD'), oneDayBeforeStartString)
+  return getTrendDatas(prevStartDay.toDate(), oneDayBeforeStart.toDate())
 }
 
 export { getTrendDatas, getPrevTrendDatas }
