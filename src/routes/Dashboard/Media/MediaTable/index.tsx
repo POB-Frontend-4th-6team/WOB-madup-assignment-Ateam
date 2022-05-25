@@ -1,4 +1,4 @@
-import styles from './media.module.scss'
+import styles from './mediaTable.module.scss'
 import { IMediaLabel } from 'types/media'
 import { getMediaTableData } from 'services/media'
 
@@ -6,9 +6,9 @@ interface IProps {
   mediaInfo: IMediaLabel[]
 }
 
-const MediaTable = ({ mediaInfo }: IProps) => {
-  const tableHead = ['광고비', '매출', 'ROAS', '노출 수', '클릭 수', '클릭률 (CTR)', '클릭당 비용 (CPC)']
+const tableHead = ['광고비', '매출', 'ROAS', '노출 수', '클릭 수', '클릭률 (CTR)', '클릭당 비용 (CPC)']
 
+const MediaTable = ({ mediaInfo }: IProps) => {
   const { mediaData, totalData } = getMediaTableData()
 
   const headTitle = tableHead.map((title, idx) => {

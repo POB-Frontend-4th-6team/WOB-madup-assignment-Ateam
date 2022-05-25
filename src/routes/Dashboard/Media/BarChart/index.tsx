@@ -1,96 +1,26 @@
-import { ReactNode } from 'react'
-import { useEffect, useRef, useState } from 'hooks'
 import {
-  VictoryChart,
   VictoryAxis,
   VictoryStack,
   VictoryBar,
   VictoryTheme,
   VictoryContainer,
   VictoryLegend,
-  VictoryVoronoiContainer,
   VictoryTooltip,
 } from 'victory'
 
-import styles from './media.module.scss'
+import styles from './barChart.module.scss'
 import CHART_STYLE from './chartStyle'
 import { IMediaLabel } from 'types/media'
 import { getMediaChartData } from 'services/media'
-import { round } from 'lodash'
-
-function getSize() {
-  let width
-
-  if (window.innerWidth >= 1800) {
-    width = 1500
-  } else if (window.innerWidth < 1800 && window.innerWidth > 768) {
-    width = 1000
-  } else {
-    width = 700
-  }
-
-  return { width }
-}
-
-function useSize() {
-  const [size, setSize] = useState(getSize())
-
-  useEffect(() => {
-    const onResize = () => setSize(getSize())
-    window.addEventListener('resize', onResize)
-    return () => window.removeEventListener('resize', onResize)
-  })
-
-  return size
-}
-
-interface IVictoryChart {
-  children: ReactNode
-}
-
-const ResponsiveVictoryChart = ({ children }: IVictoryChart) => {
-  const ref = useRef<HTMLDivElement>(null)
-  const { width } = useSize()
-
-  const props = {
-    children,
-    width,
-  }
-
-  return (
-    <div ref={ref}>
-      <VictoryChart
-        theme={VictoryTheme.material}
-        domainPadding={{ x: 100, y: 0 }}
-        {...props}
-        containerComponent={
-          <VictoryVoronoiContainer
-            labels={({ datum }) => {
-              return `${round(datum.value, 2)}`
-            }}
-            responsive={false}
-            labelComponent={
-              <VictoryTooltip
-                style={{ fill: 'white', fontSize: 14 }}
-                flyoutStyle={{ fill: '#3a474e' }}
-                flyoutHeight={40}
-                flyoutPadding={20}
-              />
-            }
-          />
-        }
-      />
-    </div>
-  )
-}
+import ResponsiveVictoryChart from './ResponsiveVictoryChart'
 
 interface IProps {
   mediaInfo: IMediaLabel[]
 }
 
-const BarChart = ({ mediaInfo }: IProps) => {
-  const tickFormat = ['광고비', '매출', '노출 수', '클릭 수', '전환 수']
+const tickFormat = ['광고비', '매출', '노출 수', '클릭 수', '전환 수']
 
+const BarChart = ({ mediaInfo }: IProps) => {
   const mediaColor = mediaInfo.map((v) => v.color)
   const legendData = mediaInfo.map((v) => {
     return { name: v.krName, symbol: { fill: v.color } }
