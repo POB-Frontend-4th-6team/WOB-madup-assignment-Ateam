@@ -7,8 +7,10 @@ const Dashboard = () => {
   return (
     <div className={styles.container}>
       <DashHeader />
-      <TotalAd />
-      <Media />
+      <div className={styles.boardContainer}>
+        <TotalAd />
+        <Media />
+      </div>
     </div>
   )
 }
