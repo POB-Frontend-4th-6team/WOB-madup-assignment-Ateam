@@ -8,13 +8,13 @@ import {
   VictoryTooltip,
 } from 'victory'
 
+import { useTimeoutFn, useEffect, useState } from 'hooks'
 import { IMediaInfo } from 'types/media'
 import { getMediaChartData } from 'services/media'
 
 import styles from './barChart.module.scss'
 import CHART_STYLE from './chartStyle'
 import ResponsiveVictoryChart from './ResponsiveVictoryChart'
-import { useTimeoutFn, useEffect, useState } from 'hooks'
 
 const tickFormat = ['광고비', '매출', '노출 수', '클릭 수', '전환 수']
 
@@ -43,8 +43,16 @@ const BarChart = ({ mediaLabelList, TimeList }: IMediaInfo) => {
     <article>
       <div className={styles.chartContainer}>
         <ResponsiveVictoryChart>
-          <VictoryAxis tickValues={tickFormat} tickFormat={tickFormat} {...CHART_STYLE.tick} />
-          <VictoryAxis dependentAxis tickFormat={(y) => `${y}%`} {...CHART_STYLE.tick} />
+          <VictoryAxis
+            tickValues={tickFormat}
+            tickFormat={tickFormat}
+            style={{ axis: CHART_STYLE.stroke, ...CHART_STYLE.tick }}
+          />
+          <VictoryAxis
+            dependentAxis
+            tickFormat={(y) => `${y}%`}
+            style={{ grid: CHART_STYLE.stroke, axis: { stroke: 'white' }, ...CHART_STYLE.tick }}
+          />
           <VictoryStack colorScale={mediaColor}>
             <VictoryBar data={mediaData.google} {...CHART_STYLE.bar} labelComponent={<VictoryTooltip />} />
             <VictoryBar data={mediaData.naver} {...CHART_STYLE.bar} labelComponent={<VictoryTooltip />} />

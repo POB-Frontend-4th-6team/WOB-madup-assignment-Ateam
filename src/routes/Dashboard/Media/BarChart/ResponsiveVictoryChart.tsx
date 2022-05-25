@@ -1,6 +1,6 @@
 import { ReactNode, useRef } from 'react'
 import { round } from 'lodash'
-import { VictoryChart, VictoryTheme, VictoryTooltip, VictoryVoronoiContainer } from 'victory'
+import { VictoryChart, VictoryTooltip, VictoryVoronoiContainer } from 'victory'
 
 import { useEffect, useState } from 'hooks'
 
@@ -61,7 +61,7 @@ const ResponsiveVictoryChart = ({ children }: IVictoryChart) => {
   return (
     <div ref={ref}>
       <VictoryChart
-        theme={VictoryTheme.material}
+        height={350}
         domainPadding={{ x: 100, y: 0 }}
         containerComponent={containerComponent}
         {...chartProps}
