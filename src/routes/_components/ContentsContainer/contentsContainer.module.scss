@@ -4,14 +4,12 @@
 .container {
   width: 100%;
   min-width: 400px;
-  padding: 10px;
+  padding: 25px;
   background-color: colors.$WHITE;
   border-radius: 20px;
   box-shadow: 0 4px 10 0 rgba($color: colors.$BLACK, $alpha: 4%);
 
   @include responsive.after(SD) {
-    width: calc(100% - 80px);
     padding: 40px;
-    margin: 20px 40px;
   }
 }
