@@ -156,8 +156,9 @@
 }
 
 .addFieldBtn {
-  padding: 0 !important;
+  padding: 16px 20px !important;
   font-size: 16px;
+  background: rgba(colors.$ACTIVE_COLOR, 0.05) !important;
   border: none !important;
   border-radius: 0 !important;
 }

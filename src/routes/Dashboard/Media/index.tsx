@@ -12,10 +12,13 @@ const Media = () => {
   ]
 
   return (
-    <ContentsContainer>
-      <BarChart mediaInfo={mediaInfo} />
-      <MediaTable mediaInfo={mediaInfo} />
-    </ContentsContainer>
+    <section>
+      <h2>매체 현황</h2>
+      <ContentsContainer>
+        <BarChart mediaInfo={mediaInfo} />
+        <MediaTable mediaInfo={mediaInfo} />
+      </ContentsContainer>
+    </section>
   )
 }
 

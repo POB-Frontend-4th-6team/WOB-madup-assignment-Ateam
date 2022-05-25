@@ -52,23 +52,18 @@ const TotalAd = () => {
   )
 
   return (
-    <section>
-      <div className={styles.titleBox}>
-        <p className={styles.title}>통합 광고 현황</p>
-      </div>
+    <section className={styles.totalAd}>
+      <h2 className={styles.title}>통합 광고 현황</h2>
       <ContentsContainer>
-        <div className={styles.mainContainer}>
-          <div className={styles.mainCard} />
-          <div className={styles.dropDownBox}>
-            <div className={styles.dropDownLines}>
-              <Dropdown items={DropDownList} onItemChange={onClick1} markColors={MARK_COLORS} />
-              <Dropdown items={DropDownList2} onItemChange={onClick2} markColors={MARK_COLORS} />
-            </div>
-            <Dropdown items={['일간', '주간']} onItemChange={onDayOrWeek} size='normal' />
+        <div className={styles.mainCard}>{/* grid */}</div>
+        <div className={styles.dropDownBox}>
+          <div className={styles.dropDowns}>
+            <Dropdown items={DropDownList} onItemChange={onClick1} markColors={MARK_COLORS} />
+            <Dropdown items={DropDownList2} onItemChange={onClick2} markColors={MARK_COLORS} />
           </div>
-
-          <AdChart Selected={Selected} Selected2={Selected2} val={val} dayOrWeek={dayOrWeek} />
+          <Dropdown items={['일간', '주간']} onItemChange={onDayOrWeek} size='normal' />
         </div>
+        <AdChart Selected={Selected} Selected2={Selected2} val={val} dayOrWeek={dayOrWeek} />
       </ContentsContainer>
     </section>
   )
