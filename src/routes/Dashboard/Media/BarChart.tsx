@@ -8,12 +8,15 @@ import {
   VictoryTheme,
   VictoryContainer,
   VictoryLegend,
+  VictoryVoronoiContainer,
+  VictoryTooltip,
 } from 'victory'
 
 import styles from './media.module.scss'
 import CHART_STYLE from './chartStyle'
 import { IMediaLabel } from 'types/media'
 import { getMediaChartData } from 'services/media'
+import { round } from 'lodash'
 
 function getSize() {
   let width
@@ -60,7 +63,22 @@ const ResponsiveVictoryChart = ({ children }: IVictoryChart) => {
         theme={VictoryTheme.material}
         domainPadding={{ x: 100, y: 0 }}
         {...props}
-        containerComponent={<VictoryContainer responsive={false} />}
+        containerComponent={
+          <VictoryVoronoiContainer
+            labels={({ datum }) => {
+              return `${round(datum.value, 2)}`
+            }}
+            responsive={false}
+            labelComponent={
+              <VictoryTooltip
+                style={{ fill: 'white', fontSize: 14 }}
+                flyoutStyle={{ fill: '#3a474e' }}
+                flyoutHeight={40}
+                flyoutPadding={20}
+              />
+            }
+          />
+        }
       />
     </div>
   )
@@ -78,7 +96,7 @@ const BarChart = ({ mediaInfo }: IProps) => {
     return { name: v.krName, symbol: { fill: v.color } }
   })
 
-  const { mediaPerData } = getMediaChartData()
+  const { mediaData } = getMediaChartData()
 
   return (
     <article>
@@ -87,10 +105,15 @@ const BarChart = ({ mediaInfo }: IProps) => {
           <VictoryAxis tickValues={tickFormat} tickFormat={tickFormat} {...CHART_STYLE.tick} />
           <VictoryAxis dependentAxis tickFormat={(x) => `${x}%`} {...CHART_STYLE.tick} />
           <VictoryStack colorScale={mediaColor}>
-            <VictoryBar data={mediaPerData.google} {...CHART_STYLE.bar} />
-            <VictoryBar data={mediaPerData.naver} {...CHART_STYLE.bar} />
-            <VictoryBar data={mediaPerData.facebook} {...CHART_STYLE.bar} />
-            <VictoryBar data={mediaPerData.kakao} {...CHART_STYLE.bar} cornerRadius={{ top: 6 }} />
+            <VictoryBar data={mediaData.google} {...CHART_STYLE.bar} labelComponent={<VictoryTooltip />} />
+            <VictoryBar data={mediaData.naver} {...CHART_STYLE.bar} labelComponent={<VictoryTooltip />} />
+            <VictoryBar data={mediaData.facebook} {...CHART_STYLE.bar} labelComponent={<VictoryTooltip />} />
+            <VictoryBar
+              data={mediaData.kakao}
+              {...CHART_STYLE.bar}
+              labelComponent={<VictoryTooltip />}
+              cornerRadius={{ top: 6 }}
+            />
           </VictoryStack>
         </ResponsiveVictoryChart>
       </div>

@@ -9,11 +9,11 @@ const mediaNames = ['google', 'facebook', 'naver', 'kakao']
 
 export const getMediaChartData = () => {
   const dataInit = [
-    { value: 0, category: '광고비' },
-    { value: 0, category: '매출' },
-    { value: 0, category: '노출 수' },
-    { value: 0, category: '클릭 수' },
-    { value: 0, category: '전환 수' },
+    { value: 0, perValue: 0, category: '광고비' },
+    { value: 0, perValue: 0, category: '매출' },
+    { value: 0, perValue: 0, category: '노출 수' },
+    { value: 0, perValue: 0, category: '클릭 수' },
+    { value: 0, perValue: 0, category: '전환 수' },
   ]
 
   const mediaData: Record<string, IMediaChart[]> = {
@@ -22,15 +22,9 @@ export const getMediaChartData = () => {
     naver: [],
     kakao: [],
   }
-  const mediaPerData: Record<string, IMediaChart[]> = {
-    google: [],
-    facebook: [],
-    naver: [],
-    kakao: [],
-  }
+
   mediaNames.forEach((name) => {
     mediaData[name] = cloneDeep(dataInit)
-    mediaPerData[name] = cloneDeep(dataInit)
   })
 
   const totalData = cloneDeep(dataInit)
@@ -52,12 +46,12 @@ export const getMediaChartData = () => {
   })
 
   mediaNames.forEach((name) => {
-    mediaPerData[name].forEach((item, idx) => {
-      item.value = (mediaData[name][idx].value / totalData[idx].value) * 100
+    mediaData[name].forEach((item, idx) => {
+      item.perValue = (mediaData[name][idx].value / totalData[idx].value) * 100
     })
   })
 
-  return { mediaPerData }
+  return { mediaData }
 }
 
 export const getMediaTableData = () => {

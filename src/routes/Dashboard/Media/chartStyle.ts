@@ -5,7 +5,7 @@ const CHART_STYLE = {
     },
     barWidth: 40,
     x: 'category',
-    y: 'value',
+    y: 'perValue',
   },
   tick: {
     style: {
