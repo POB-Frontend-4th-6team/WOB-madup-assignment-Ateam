@@ -1,0 +1,50 @@
+@use '/src/styles/constants/colors';
+
+.tableContainer {
+  overflow-x: scroll;
+
+  table {
+    width: 100%;
+    min-width: 1200px;
+    margin-bottom: 15px;
+    color: colors.$MAIN_TEXT_COLOR;
+    text-align: right;
+
+    tr {
+      line-height: 40px;
+      border-bottom: 1px solid colors.$CHART_BORDER;
+
+      th,
+      td {
+        width: 200px;
+      }
+    }
+
+    thead {
+      tr {
+        color: colors.$SUB_TEXT;
+        border-top: 1px solid colors.$CHART_BORDER;
+      }
+    }
+
+    tbody {
+      th {
+        text-align: left;
+      }
+
+      .totalSum {
+        color: colors.$TOTAL_TEXT;
+      }
+    }
+  }
+
+  &::-webkit-scrollbar {
+    display: block;
+    background-color: colors.$WHITE;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: colors.$SCROLL_BAR;
+    border-radius: 10px;
+  }
+}

@@ -1,5 +1,23 @@
-.container {
+@use '/src/styles/constants/colors';
+
+.pageHeader {
+  margin-left: 70px;
+  font-size: 24px;
+  font-weight: 500;
+  color: colors.$PAGE_HEADER;
+}
+
+.makeAdButton {
+  width: 100px;
+  height: 40px;
+  font-weight: 500;
+  color: colors.$WHITE;
+  background: #586cf5;
+  border-radius: 10px;
+}
+
+.dropdownAndButtonContainer {
   display: flex;
-  align-items: center;
-  justify-content: center;
+  justify-content: space-between;
+  width: 100%;
 }

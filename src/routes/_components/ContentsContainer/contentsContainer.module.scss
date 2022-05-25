@@ -1,8 +1,17 @@
+@use '/src/styles/constants/colors';
+@use '/src/styles/mixins/responsive';
+
 .container {
-  width: calc(100% - 80px);
-  padding: 40px;
-  margin: 20px 40px;
-  background-color: white;
+  width: 100%;
+  min-width: 400px;
+  padding: 10px;
+  background-color: colors.$WHITE;
   border-radius: 20px;
-  box-shadow: 0 4px 10 0 rgba($color: #000000, $alpha: 4%);
+  box-shadow: 0 4px 10 0 rgba($color: colors.$BLACK, $alpha: 4%);
+
+  @include responsive.after(SD) {
+    width: calc(100% - 80px);
+    padding: 40px;
+    margin: 20px 40px;
+  }
 }
