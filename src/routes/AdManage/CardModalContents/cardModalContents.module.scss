@@ -1,0 +1,26 @@
+@use '/src/styles/constants/colors';
+
+.modalContainer {
+  display: flex;
+  flex-direction: column;
+  margin: 20px auto;
+}
+
+select,
+input {
+  width: 200px;
+  height: 30px;
+  margin-top: 5px;
+  border: 1.5px solid #d1d8dc;
+  border-radius: 5px;
+}
+
+.addNewButton {
+  width: 200px;
+  padding: 10px 25px;
+  margin: auto;
+  font-weight: 500;
+  color: colors.$PAGE_HEADER;
+  border: 1.5px solid #d1d8dc;
+  border-radius: 10px;
+}

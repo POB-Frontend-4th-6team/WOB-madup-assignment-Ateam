@@ -3,10 +3,14 @@ import styles from './adManage.module.scss'
 import { useAppDispatch, useState, useMount } from 'hooks'
 import { setStatusOption } from 'states/ad'
 
+import { setModal } from 'states/modal'
+
 import ContentsContainer from 'routes/_components/ContentsContainer'
 import Dropdown from 'routes/_components/Dropdown'
 import CardList from './CardList'
 import Loading from 'routes/_components/Loading'
+import Modal from 'routes/_components/Modal/ModalFrame'
+import CardModalContents from './CardModalContents'
 
 const DROPDOWN_ITEMS = ['전체보기', '진행중', '종료']
 
@@ -28,6 +32,8 @@ const AdManage = () => {
     else dispatch(setStatusOption('All'))
   }
 
+  const handleModalOpen = () => dispatch(setModal(true))
+
   return (
     <>
       <h1 className={styles.pageHeader}>광고관리</h1>
@@ -36,7 +42,7 @@ const AdManage = () => {
         <ContentsContainer>
           <div className={styles.dropdownAndButtonContainer}>
             <Dropdown items={DROPDOWN_ITEMS} onItemChange={dispatchCurrentAdState} />
-            <button type='button' className={styles.makeAdButton}>
+            <button type='button' onClick={handleModalOpen} className={styles.makeAdButton}>
               광고 만들기
             </button>
           </div>
@@ -44,6 +50,9 @@ const AdManage = () => {
           <CardList />
         </ContentsContainer>
       )}
+      <Modal width='500px' height='500px' text='광고 관리카드 생성'>
+        <CardModalContents />
+      </Modal>
     </>
   )
 }
