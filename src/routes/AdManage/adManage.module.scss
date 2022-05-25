@@ -1,23 +1,45 @@
+@use '/src/styles/mixins/flexbox';
 @use '/src/styles/constants/colors';
+@use '/src/styles/mixins/responsive';
 
-.pageHeader {
-  margin-left: 70px;
-  font-size: 24px;
-  font-weight: 500;
-  color: colors.$PAGE_HEADER;
-}
+.container {
+  .header {
+    @include flexbox.flexbox(between, center);
+    height: 60px;
+    padding: 0 30px;
 
-.makeAdButton {
-  width: 100px;
-  height: 40px;
-  font-weight: 500;
-  color: colors.$WHITE;
-  background: #586cf5;
-  border-radius: 10px;
-}
+    @include responsive.after(SD) {
+      height: 80px;
+    }
 
-.dropdownAndButtonContainer {
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
+    .headerTitle {
+      font-size: 20px;
+      font-weight: 500;
+      color: colors.$PAGE_HEADER;
+
+      @include responsive.after(ML) {
+        font-size: 23px;
+      }
+
+      @include responsive.after(SD) {
+        font-size: 26px;
+      }
+    }
+  }
+
+  .adContainer {
+    padding: 30px;
+
+    .dropDownBox {
+      @include flexbox.flexbox(between, center);
+
+      .adButton {
+        padding: 10px 20px;
+        font-size: 14px;
+        color: colors.$WHITE;
+        background: colors.$ACTIVE_COLOR;
+        border-radius: 10px;
+      }
+    }
+  }
 }
