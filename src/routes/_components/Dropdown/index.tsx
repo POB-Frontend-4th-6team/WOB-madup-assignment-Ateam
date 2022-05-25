@@ -62,7 +62,11 @@ const Dropdown = ({ children, items, onItemChange, size = 'normal', unbordered =
             <p>{item}</p>
           </li>
         ))}
-        {children && <li role='row'>{children}</li>}
+        {children && (
+          <li role='row' className={styles.addService}>
+            {children}
+          </li>
+        )}
       </ul>
     </div>
   )
