@@ -1,6 +1,6 @@
-import { FormEvent, ChangeEvent, useEffect } from 'react'
+import { FormEvent, ChangeEvent } from 'react'
 
-import { useState } from 'hooks'
+import { useState, useEffect, useRef, useMount } from 'hooks'
 import styles from './sidebar.module.scss'
 
 interface Props {
@@ -10,6 +10,7 @@ interface Props {
 const AddServiceField = ({ handleAddItem }: Props) => {
   const [serviceText, setServiceText] = useState('')
   const [isSubmit, setSubmit] = useState(false)
+  const inputBox = useRef<HTMLInputElement>(null)
 
   const handleAddField = () => {
     setSubmit(true)
@@ -31,10 +32,14 @@ const AddServiceField = ({ handleAddItem }: Props) => {
     if (isSubmit) handleAddItem(serviceText)
   })
 
+  useMount(() => {
+    if (inputBox.current) inputBox.current.focus()
+  })
+
   return (
     <form className={styles.modal} onSubmit={handleSubmit}>
       <div className={styles.inputBox}>
-        <input type='text' onChange={handleChange} value={serviceText} />
+        <input type='text' onChange={handleChange} value={serviceText} ref={inputBox} />
         <button className={styles.addBtn} type='button' onClick={handleOnClick}>
           추가
         </button>
