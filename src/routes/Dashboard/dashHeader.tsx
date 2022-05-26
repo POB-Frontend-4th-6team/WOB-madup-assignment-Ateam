@@ -1,10 +1,12 @@
-import { ko } from 'date-fns/esm/locale'
-import { VectorImage } from 'assets/svgs'
+import { FocusEvent, useEffect } from 'react'
 import DatePicker from 'react-datepicker'
-import { useEffect } from 'react'
+import { ko } from 'date-fns/esm/locale'
+
+import { VectorImage } from 'assets/svgs'
 import styles from './dashboard.module.scss'
 import 'react-datepicker/dist/react-datepicker.css'
 import { useAppDispatch, useAppSelector } from 'hooks'
+
 import { setTimeListFormat } from 'states/time'
 import { getStartDate, setStartDate } from 'states/startDate'
 import { getEndDate, setEndDate } from 'states/endDate'
@@ -15,10 +17,14 @@ const DashHeader = () => {
   const startDate = useAppSelector(getStartDate)
   const endDate = useAppSelector(getEndDate)
 
-  const onChange = (dates: any) => {
+  const handleChange = (dates: any) => {
     const [start, end] = dates
     dispatch(setStartDate(start))
     dispatch(setEndDate(end))
+  }
+
+  const handleChangeRaw = (e: FocusEvent<HTMLInputElement>) => {
+    e.preventDefault()
   }
 
   useEffect(() => {
@@ -49,7 +55,7 @@ const DashHeader = () => {
       <div className={styles.date}>
         <DatePicker
           selected={startDate}
-          onChange={onChange}
+          onChange={handleChange}
           selectsStart
           startDate={startDate}
           endDate={endDate}
@@ -57,6 +63,9 @@ const DashHeader = () => {
           locale={ko}
           dateFormat='yyyy년 MM월 dd일'
           className={styles.datePicker}
+          onChangeRaw={handleChangeRaw}
+          minDate={new Date('2022-02-01')}
+          maxDate={new Date('2022-04-20')}
         />
         <VectorImage />
       </div>
