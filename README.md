@@ -1,6 +1,16 @@
 # Madup Dashboard Assignment
+
 ## 참여 인원
-이강윤, 이지훈, 이치호, 김영만, 김학률
+☻ 김영만 [깃허브 💻 ](https://github.com/sksn12) <br/>
+
+☻ 김학률 [깃허브 💻 ](https://github.com/markyul) <br/>
+
+☻ 이강윤 [깃허브 💻 ](https://github.com/rkddbs1031) <br/>
+
+☻ 이지훈 [깃허브 💻 ](https://github.com/jihun1233) <br/>
+
+☻ 이치호 [깃허브 💻 ](https://github.com/usernamechiho) 
+
 ## 사용 라이브러리
 - `"@reduxjs/toolkit": "^1.8.1"`
 - `"@types/react-datepicker": "^4.4.1"`
