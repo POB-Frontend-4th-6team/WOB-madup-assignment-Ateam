@@ -1,15 +1,17 @@
 import { useState, useCallback } from 'react'
-
 import { useAppDispatch, useAppSelector } from 'hooks'
 import ContentsContainer from 'routes/_components/ContentsContainer'
-import styles from './totalAd.module.scss'
+import Dropdown from 'routes/_components/Dropdown'
 import { getTimeListFormat } from 'states/time'
 
 import AdChart from './AdChart/adChart'
+import styles from './totalAd.module.scss'
+
 import TrendGrid from './TrendGrid'
-import Dropdown from 'routes/_components/Dropdown'
 import { getSelected, setSelected } from 'states/selcted'
 import { getSelected2, setSelected2 } from 'states/selected2'
+import Modal from 'routes/_components/Modal/ModalFrame'
+import useToggle from 'hooks/useToggle'
 
 const defaultArr = ['매드업', 'ROAS', '광고비', '노출 수', '클릭 수', '전환 수', '매출']
 const MARK_COLORS = {
@@ -28,6 +30,8 @@ const TotalAd = () => {
   const selecteed2 = useAppSelector(getSelected2)
 
   const dispatch = useAppDispatch()
+
+  const [isModalOpen, , openModal, closeModal] = useToggle()
 
   const [DropDownList, setDropDownList] = useState(['ROAS', '광고비', '노출 수', '클릭 수', '전환 수', '매출'])
   const [DropDownList2, setDropDownList2] = useState(['매드업', '광고비', '노출 수', '클릭 수', '전환 수', '매출'])
@@ -57,10 +61,10 @@ const TotalAd = () => {
 
   const onDayOrWeek = useCallback(
     (e: string) => {
-      if (timeList.length < 14 && e === '주간') alert('14일 이상 선택하시오!')
+      if (timeList.length < 14 && e === '주간') openModal()
       else setDayOrWeek(e)
     },
-    [timeList]
+    [openModal, timeList.length]
   )
 
   return (
@@ -79,6 +83,9 @@ const TotalAd = () => {
         </div>
         <AdChart val={val} dayOrWeek={dayOrWeek} />
       </ContentsContainer>
+      <Modal isOpen={isModalOpen} onClose={closeModal} width='200px' height='100px'>
+        14일 이상 선택해주세요
+      </Modal>
     </section>
   )
 }

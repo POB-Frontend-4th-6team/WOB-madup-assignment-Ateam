@@ -50,6 +50,7 @@ dd {
 }
 
 .editButton {
+  box-sizing: content-box;
   width: 100px;
   padding: 10px 20px;
   margin-top: 20px;

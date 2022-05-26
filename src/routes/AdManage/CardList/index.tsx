@@ -12,9 +12,9 @@ const CardList = () => {
 
   let fetchedAdData: advertisementCardType[]
 
-  if (statusOption === 'All') fetchedAdData = fetchAllAd()
-  else if (statusOption === 'Active') fetchedAdData = fetchOnlyActiveAd()
-  else if (statusOption === 'Ended') fetchedAdData = fetchOnlyEndedAd()
+  if (statusOption === '전체보기') fetchedAdData = fetchAllAd()
+  else if (statusOption === '진행중') fetchedAdData = fetchOnlyActiveAd()
+  else if (statusOption === '종료') fetchedAdData = fetchOnlyEndedAd()
   else fetchedAdData = fetchAllAd()
 
   const Cards: JSX.Element[] = fetchedAdData.map((info) => <Card key={`Card_Info${info.title}`} info={info} />)

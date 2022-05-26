@@ -4,7 +4,6 @@ import time from './time'
 import startDate from './startDate'
 import endDate from './endDate'
 import ad from './ad'
-import modal from './modal'
 import selcted from './selcted'
 import selcted2 from './selected2'
 
@@ -15,7 +14,6 @@ export const store = configureStore({
     time,
     startDate,
     endDate,
-    modal,
     selcted,
     selcted2,
   },
