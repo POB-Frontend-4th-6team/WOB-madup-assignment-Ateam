@@ -1,4 +1,6 @@
 # Madup Dashboard Assignment
+## 배포
+https://wanted-madup-6a.netlify.app/
 
 ## 참여 인원
 ☻ 김영만 [깃허브 💻 ](https://github.com/sksn12) <br/>
