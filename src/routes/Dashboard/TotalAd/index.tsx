@@ -4,7 +4,7 @@ import ContentsContainer from 'routes/_components/ContentsContainer'
 import Dropdown from 'routes/_components/Dropdown'
 import { getTimeListFormat } from 'states/time'
 
-import AdChart from './AdChart/adChart'
+import AdChart from './AdChart'
 import styles from './totalAd.module.scss'
 
 import TrendGrid from './TrendGrid'
