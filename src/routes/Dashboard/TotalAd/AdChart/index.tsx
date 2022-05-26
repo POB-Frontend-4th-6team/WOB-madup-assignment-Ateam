@@ -3,7 +3,7 @@ import { VictoryChart, VictoryLine, VictoryAxis, VictoryVoronoiContainer, Victor
 import dayjs from 'dayjs'
 
 import styles from './adChart.module.scss'
-import trendData from 'assets/jsons/trend-data-set.json'
+import trendData from 'assets/jsons/wanted_FE_trend-data-set.json'
 import { useAppSelector } from 'hooks'
 import { getTimeListFormat } from 'states/time'
 import { dataType } from 'types/totalAd'
