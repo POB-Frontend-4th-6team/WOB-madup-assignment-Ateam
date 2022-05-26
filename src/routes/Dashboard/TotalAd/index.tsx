@@ -83,8 +83,8 @@ const TotalAd = () => {
         </div>
         <AdChart val={val} dayOrWeek={dayOrWeek} />
       </ContentsContainer>
-      <Modal isOpen={isModalOpen} onClose={closeModal} width='200px' height='100px'>
-        14일 이상 선택해주세요
+      <Modal isOpen={isModalOpen} onClose={closeModal} width='300px' height='180px' text='알림창'>
+        <p>14일 이상 선택해주세요</p>
       </Modal>
     </section>
   )

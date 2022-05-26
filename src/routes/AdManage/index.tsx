@@ -8,7 +8,6 @@ import Loading from 'routes/_components/Loading'
 
 import styles from './adManage.module.scss'
 import CardList from './CardList'
-import CardModalContents from './CardModalContents'
 
 const DROPDOWN_ITEMS = ['전체보기', '진행중', '종료']
 
@@ -31,7 +30,7 @@ const AdManage = () => {
     return () => clearTimeout(timeout)
   })
 
-  if (isLoading) return <Loading size='100px' />
+  if (isLoading) return <Loading size='80px' />
 
   return (
     <div className={styles.container}>
@@ -49,8 +48,6 @@ const AdManage = () => {
           <CardList />
         </ContentsContainer>
       </section>
-
-      <CardModalContents />
     </div>
   )
 }
