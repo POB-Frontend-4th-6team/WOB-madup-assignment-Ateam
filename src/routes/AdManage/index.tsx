@@ -1,7 +1,6 @@
 import { useState } from 'react'
 import { useAppDispatch, useAppSelector, useMount } from 'hooks'
 import { setStatusOption, getStatusOption } from 'states/ad'
-import { setModal } from 'states/modal'
 
 import ContentsContainer from 'routes/_components/ContentsContainer'
 import Dropdown from 'routes/_components/Dropdown'
@@ -9,8 +8,6 @@ import Loading from 'routes/_components/Loading'
 
 import styles from './adManage.module.scss'
 import CardList from './CardList'
-import Modal from 'routes/_components/Modal/ModalFrame'
-import CardModalContents from './CardModalContents'
 
 const DROPDOWN_ITEMS = ['전체보기', '진행중', '종료']
 
@@ -26,8 +23,6 @@ const AdManage = () => {
     else if (item === '종료') dispatch(setStatusOption('종료'))
     else dispatch(setStatusOption('전체보기'))
   }
-
-  const handleModalOpen = () => dispatch(setModal(true))
 
   useMount(() => {
     setIsLoading(true)
@@ -46,17 +41,13 @@ const AdManage = () => {
         <ContentsContainer>
           <div className={styles.dropDownBox}>
             <Dropdown items={DROPDOWN_ITEMS} onItemChange={dispatchCurrentAdState} defaultItem={statusCategory} />
-            <button type='button' className={styles.adButton} onClick={handleModalOpen}>
+            <button type='button' className={styles.adButton}>
               광고 만들기
             </button>
           </div>
           <CardList />
         </ContentsContainer>
       </section>
-
-      <Modal width='500px' height='500px' text='광고 카드 생성'>
-        <CardModalContents />
-      </Modal>
     </div>
   )
 }
