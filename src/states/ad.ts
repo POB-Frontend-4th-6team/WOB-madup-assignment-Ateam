@@ -6,7 +6,7 @@ export interface StatusOptionState {
 }
 
 const INITIAL_STATE: StatusOptionState = {
-  optionState: 'All',
+  optionState: '전체보기',
 }
 
 export const statusOptionSlice = createSlice({
