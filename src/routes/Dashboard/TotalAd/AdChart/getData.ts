@@ -37,18 +37,26 @@ export function getWeekData(dataList: dataType[], timeList: string[]) {
   for (let i = 0; i < dataList.length; i += 1) {
     if (i % 7 === 0 && i !== 0) {
       const Date = timeList[i].split('-')
-      let month = ''
-      if (Number(Date[2]) <= 8) month = '첫'
-      else if (Number(Date[2]) <= 15) month = '둘'
-      else if (Number(Date[2]) <= 22) month = '셋'
-      else month = '4'
-
-      arr.push({ x: `${Date[1]}월 ${month}째 주`, y: sum })
+      const week = getWeek(Date)
+      arr.push({ x: `${Date[1]}월 ${week}째 주`, y: sum })
       sum = 0
       cnt += 1
     }
     sum += dataList[i].y
-    if (cnt === per && i === dataList.length - 1) arr.push({ x: cnt + 1, y: sum })
+    if (cnt === per && i === dataList.length - 1) {
+      const Date = timeList[i].split('-')
+      const week = getWeek(Date)
+      arr.push({ x: `${Date[1]}월 ${week}째 주`, y: sum })
+    }
   }
   return arr
+}
+
+function getWeek(Date: string[]) {
+  let month = ''
+  if (Number(Date[2]) <= 8) month = '첫'
+  else if (Number(Date[2]) <= 15) month = '둘'
+  else if (Number(Date[2]) <= 22) month = '셋'
+  else month = '4'
+  return month
 }

@@ -9,16 +9,18 @@ import { getTimeListFormat } from 'states/time'
 import { dataType } from 'types/totalAd'
 import { getColor, getData, getWeekData } from './getData'
 import ResponsiveVictoryChart from '../../Media/BarChart/ResponsiveVictoryChart'
+import { getSelected } from 'states/selcted'
+import { getSelected2 } from 'states/selected2'
 
 interface Props {
-  Selected: string
-  Selected2: string
   val: boolean
   dayOrWeek: string
 }
 
-const AdChart = ({ Selected, Selected2, val, dayOrWeek }: Props) => {
+const AdChart = ({ val, dayOrWeek }: Props) => {
   const timeList = useAppSelector(getTimeListFormat)
+  const selected = useAppSelector(getSelected)
+  const selected2 = useAppSelector(getSelected2)
 
   const [dataList, setDataList] = useState<dataType[]>([])
   const [dataList2, setDataList2] = useState<dataType[]>([])
@@ -40,17 +42,17 @@ const AdChart = ({ Selected, Selected2, val, dayOrWeek }: Props) => {
       })
       if (selectedDay === undefined) break
       if (val) {
-        color.current = getColor(Selected)
-        if (Selected === '매드업') box = []
-        else box.push({ x: i + 1, y: getData(Selected, selectedDay) })
+        color.current = getColor(selected)
+        if (selected === '매드업') box = []
+        else box.push({ x: i + 1, y: getData(selected, selectedDay) })
       } else {
-        color2.current = getColor(Selected2)
-        if (Selected2 === '매드업') box = []
-        else box.push({ x: i + 1, y: getData(Selected2, selectedDay) })
+        color2.current = getColor(selected2)
+        if (selected2 === '매드업') box = []
+        else box.push({ x: i + 1, y: getData(selected2, selectedDay) })
       }
     }
     return box
-  }, [Selected, Selected2, val, timeList])
+  }, [selected, selected2, val, timeList])
 
   const choiceWeek = useCallback(() => {
     if (dataList.length !== 0) setWeekDataList(getWeekData(dataList, timeList))
@@ -83,36 +85,21 @@ const AdChart = ({ Selected, Selected2, val, dayOrWeek }: Props) => {
             style={{ tickLabels: { fontSize: 14, fill: '#94a2ad' } }}
           />
 
-          {dataList?.length !== 0 &&
-            (Selected === 'ROAS' ? (
-              <VictoryAxis
-                dependentAxis
-                style={{ grid: { stroke: 'lightGrey' }, tickLabels: { fontSize: 14, fill: '#94a2ad' } }}
-                tickFormat={(y) => `${y}%`}
-              />
-            ) : (
-              <VictoryAxis
-                dependentAxis
-                style={{ grid: { stroke: 'lightGrey' }, tickLabels: { fontSize: 14, fill: '#94a2ad' } }}
-                tickFormat={(y) => y}
-              />
-            ))}
-          {dataList2?.length !== 0 &&
-            (Selected2 === 'ROAS' ? (
-              <VictoryAxis
-                dependentAxis
-                style={{ grid: { stroke: 'lightGrey' }, tickLabels: { fontSize: 14, fill: '#94a2ad' } }}
-                tickFormat={(y) => `${y}%`}
-                orientation='right'
-              />
-            ) : (
-              <VictoryAxis
-                dependentAxis
-                style={{ grid: { stroke: 'lightGrey' }, tickLabels: { fontSize: 14, fill: '#94a2ad' } }}
-                tickFormat={(y) => y}
-                orientation='right'
-              />
-            ))}
+          {dataList?.length !== 0 && (
+            <VictoryAxis
+              dependentAxis
+              style={{ grid: { stroke: 'lightGrey' }, tickLabels: { fontSize: 14, fill: '#94a2ad' } }}
+              tickFormat={(y) => (selected === 'ROAS' ? `${y}%` : y)}
+            />
+          )}
+          {dataList2?.length !== 0 && (
+            <VictoryAxis
+              dependentAxis
+              style={{ grid: { stroke: 'lightGrey' }, tickLabels: { fontSize: 14, fill: '#94a2ad' } }}
+              tickFormat={(y) => (selected === 'ROAS' ? `${y}%` : y)}
+              orientation='right'
+            />
+          )}
 
           <VictoryLine
             style={{

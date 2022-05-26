@@ -1,6 +1,6 @@
 import { useState, useCallback } from 'react'
 
-import { useAppSelector } from 'hooks'
+import { useAppDispatch, useAppSelector } from 'hooks'
 import ContentsContainer from 'routes/_components/ContentsContainer'
 import styles from './totalAd.module.scss'
 import { getTimeListFormat } from 'states/time'
@@ -8,6 +8,8 @@ import { getTimeListFormat } from 'states/time'
 import AdChart from './AdChart/adChart'
 import TrendGrid from './TrendGrid'
 import Dropdown from 'routes/_components/Dropdown'
+import { getSelected, setSelected } from 'states/selcted'
+import { getSelected2, setSelected2 } from 'states/selected2'
 
 const defaultArr = ['매드업', 'ROAS', '광고비', '노출 수', '클릭 수', '전환 수', '매출']
 const MARK_COLORS = {
@@ -22,29 +24,36 @@ const MARK_COLORS = {
 
 const TotalAd = () => {
   const timeList = useAppSelector(getTimeListFormat)
+  const selecteed = useAppSelector(getSelected)
+  const selecteed2 = useAppSelector(getSelected2)
+
+  const dispatch = useAppDispatch()
 
   const [DropDownList, setDropDownList] = useState(['ROAS', '광고비', '노출 수', '클릭 수', '전환 수', '매출'])
   const [DropDownList2, setDropDownList2] = useState(['매드업', '광고비', '노출 수', '클릭 수', '전환 수', '매출'])
 
-  const [Selected, setSelected] = useState(DropDownList[0])
-  const [Selected2, setSelected2] = useState(DropDownList2[0])
-
   const [val, setVal] = useState(true)
   const [dayOrWeek, setDayOrWeek] = useState('')
 
-  const onClick1 = useCallback((e: string) => {
-    setSelected(e)
-    const data = defaultArr.filter((item) => item !== e)
-    setDropDownList2(data)
-    setVal(true)
-  }, [])
+  const onClick1 = useCallback(
+    (e: string) => {
+      dispatch(setSelected(e))
+      const data = defaultArr.filter((item) => item !== e)
+      setDropDownList2(data)
+      setVal(true)
+    },
+    [dispatch]
+  )
 
-  const onClick2 = useCallback((e: string) => {
-    setSelected2(e)
-    const data = defaultArr.filter((item) => item !== e)
-    setDropDownList(data)
-    setVal(false)
-  }, [])
+  const onClick2 = useCallback(
+    (e: string) => {
+      dispatch(setSelected2(e))
+      const data = defaultArr.filter((item) => item !== e)
+      setDropDownList(data)
+      setVal(false)
+    },
+    [dispatch]
+  )
 
   const onDayOrWeek = useCallback(
     (e: string) => {
@@ -63,12 +72,12 @@ const TotalAd = () => {
         </div>
         <div className={styles.dropDownBox}>
           <div className={styles.dropDowns}>
-            <Dropdown items={DropDownList} onItemChange={onClick1} markColors={MARK_COLORS} />
-            <Dropdown items={DropDownList2} onItemChange={onClick2} markColors={MARK_COLORS} />
+            <Dropdown items={DropDownList} onItemChange={onClick1} markColors={MARK_COLORS} defaultItem={selecteed} />
+            <Dropdown items={DropDownList2} onItemChange={onClick2} markColors={MARK_COLORS} defaultItem={selecteed2} />
           </div>
           <Dropdown items={['일간', '주간']} onItemChange={onDayOrWeek} size='normal' unbordered />
         </div>
-        <AdChart Selected={Selected} Selected2={Selected2} val={val} dayOrWeek={dayOrWeek} />
+        <AdChart val={val} dayOrWeek={dayOrWeek} />
       </ContentsContainer>
     </section>
   )
