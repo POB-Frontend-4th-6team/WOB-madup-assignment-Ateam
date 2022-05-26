@@ -56,6 +56,9 @@
 - 그래프에 마우스를 올리면 수치를 나타낸다.
 - table 표에서 수치로 매체별 차이를 한번에 비교할 수 있다.
 
+![media_responsive](https://user-images.githubusercontent.com/52916848/170389531-6b36292a-db42-4b61-a476-1eb79317b35c.gif)
+- 반응형으로 조금씩 줄어들다가 스크롤로 볼 수 있다.
+
 #### 광고 관리
 ![광고관리](https://user-images.githubusercontent.com/87627359/170386133-4fc7bf3e-e2c7-4a01-9005-6bd2f2a1c340.gif)
 - 컴포넌트가 처음 마운트 될 때 모든 광고 카드를 보여준다.
