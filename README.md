@@ -35,6 +35,76 @@
 - `"victory-core": "^36.4.0"`
 - `"web-vitals": "^2.1.0`
 
+## 폴더구조
+```
+📦routes
+ ┣ 📂AdManage
+ ┃ ┣ 📂CardList
+ ┃ ┃ ┣ 📂Card
+ ┃ ┃ ┃ ┣ 📜card.module.scss
+ ┃ ┃ ┃ ┗ 📜index.tsx
+ ┃ ┃ ┣ 📜cardList.module.scss
+ ┃ ┃ ┗ 📜index.tsx
+ ┃ ┣ 📂CardModalContents
+ ┃ ┃ ┗ 📜index.tsx
+ ┃ ┣ 📜adManage.module.scss
+ ┃ ┗ 📜index.tsx
+ ┣ 📂Dashboard
+ ┃ ┣ 📂Media
+ ┃ ┃ ┣ 📂BarChart
+ ┃ ┃ ┃ ┣ 📜ResponsiveVictoryChart.tsx
+ ┃ ┃ ┃ ┣ 📜barChart.module.scss
+ ┃ ┃ ┃ ┣ 📜chartStyle.ts
+ ┃ ┃ ┃ ┗ 📜index.tsx
+ ┃ ┃ ┣ 📂MediaTable
+ ┃ ┃ ┃ ┣ 📜index.tsx
+ ┃ ┃ ┃ ┗ 📜mediaTable.module.scss
+ ┃ ┃ ┣ 📜index.tsx
+ ┃ ┃ ┗ 📜media.module.scss
+ ┃ ┣ 📂TotalAd
+ ┃ ┃ ┣ 📂TrendGrid
+ ┃ ┃ ┃ ┣ 📂Item
+ ┃ ┃ ┃ ┃ ┣ 📜index.tsx
+ ┃ ┃ ┃ ┃ ┗ 📜item.module.scss
+ ┃ ┃ ┃ ┣ 📜index.tsx
+ ┃ ┃ ┃ ┗ 📜trendGrid.module.scss
+ ┃ ┃ ┣ 📜adChart.tsx
+ ┃ ┃ ┣ 📜getData.ts
+ ┃ ┃ ┣ 📜index.tsx
+ ┃ ┃ ┗ 📜totalAd.module.scss
+ ┃ ┣ 📜dashHeader.tsx
+ ┃ ┣ 📜dashboard.module.scss
+ ┃ ┗ 📜index.tsx
+ ┣ 📂ErrorPage
+ ┃ ┣ 📜errorPage.module.scss
+ ┃ ┗ 📜index.tsx
+ ┣ 📂_components
+ ┃ ┣ 📂ContentsContainer
+ ┃ ┃ ┣ 📜contentsContainer.module.scss
+ ┃ ┃ ┗ 📜index.tsx
+ ┃ ┣ 📂Dropdown
+ ┃ ┃ ┣ 📜dropdown.module.scss
+ ┃ ┃ ┗ 📜index.tsx
+ ┃ ┣ 📂Header
+ ┃ ┃ ┣ 📜header.module.scss
+ ┃ ┃ ┗ 📜index.tsx
+ ┃ ┣ 📂Loading
+ ┃ ┃ ┣ 📜index.tsx
+ ┃ ┃ ┗ 📜loading.module.scss
+ ┃ ┣ 📂Modal
+ ┃ ┃ ┣ 📂ModalFrame
+ ┃ ┃ ┃ ┣ 📜index.tsx
+ ┃ ┃ ┃ ┗ 📜modal.module.scss
+ ┃ ┃ ┗ 📜index.tsx
+ ┃ ┗ 📂Sidebar
+ ┃ ┃ ┣ 📜AddServiceField.tsx
+ ┃ ┃ ┣ 📜LNB.tsx
+ ┃ ┃ ┣ 📜index.tsx
+ ┃ ┃ ┗ 📜sidebar.module.scss
+ ┣ 📜index.tsx
+ ┗ 📜routes.module.scss
+```
+
 ## 기능
 ### Sidebar
 - 광고 센터란을 통해 페이지를 이동하며 페이지는 대시보드와, 광고관리가 있다.
