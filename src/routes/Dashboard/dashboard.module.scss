@@ -1,5 +1,52 @@
+@use '/src/styles/mixins/flexbox';
+@use '/src/styles/constants/colors';
+@use '/src/styles/mixins/responsive';
+
 .container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  width: 100%;
+  background-color: #f6f7f8;
+
+  .header {
+    @include flexbox.flexbox(between, center);
+    height: 60px;
+    padding: 0 30px;
+
+    @include responsive.after(SD) {
+      height: 80px;
+    }
+
+    h1 {
+      font-size: 20px;
+      font-weight: 500;
+
+      @include responsive.after(ML) {
+        font-size: 23px;
+      }
+
+      @include responsive.after(SD) {
+        font-size: 26px;
+      }
+    }
+
+    .date {
+      @include flexbox.flexbox(center, center);
+      width: 240px;
+
+      .datePicker {
+        width: 100%;
+        font-size: 14px;
+        color: colors.$MAIN_TEXT_COLOR;
+      }
+    }
+  }
+
+  .boardContainer {
+    padding: 30px;
+
+    h2 {
+      margin-bottom: 30px;
+      font-size: 16px;
+      font-weight: 500;
+    }
+  }
 }

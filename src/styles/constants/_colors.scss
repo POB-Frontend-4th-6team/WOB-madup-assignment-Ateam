@@ -9,7 +9,7 @@ $GRAYD: #dddddd;
 $GRAYE: #eeeeee;
 
 // Chromatic
-$RED: #ff3b30;
+$RED: #ea3a4b;
 $ORANGE: #ff9500;
 $YELLOW: #ffcc00;
 $GREEN: #34c759;
@@ -22,3 +22,37 @@ $PINK: #ff2d55;
 $BIG_TITLE: #1f315b;
 $TASKS_TITLE: #8f99bf;
 $TASK_ITEM_TITLE: #4f566f;
+
+// 공통
+$MAIN_TEXT_COLOR: #3a474e;
+$SUB_TEXT: #94a2ad;
+$MAIN_BG: #f6f7f8;
+$ACTIVE_COLOR: #586cf5;
+$SUB_GRAY: #edeff1; // border-bottom or dashboard box border or nav active bg-color
+$BOX_COLOR: #d1d8dc; // dropdown border or adManagement card border & modify btn border
+$PAGE_HEADER: #3a474e;
+
+// 사이드바
+$NAV_ACTIVE_BG: #edeff1;
+$NAV_SHADOW: rgba(99, 99, 99, 20%);
+$GUIDE_BOX: #e5f4fd;
+
+// 대시보드
+$CONTENTS_BOX_SHADOW: rgba(149, 157, 165, 20%);
+$ARROW_DOWN: #85da47;
+$ARROW_UP: #ea3a4b;
+$FACEBOOK: #4fadf7;
+$NAVER: #85da47;
+$GOOGLE: #ac8af8;
+$CHART_BORDER: #edeff1;
+$TOTAL_TEXT: $ACTIVE_COLOR;
+$SCROLL_BAR: $BOX_COLOR;
+
+$GRID_ITEM_BORDER: $SUB_GRAY;
+$GRID_ITEM_SUB_TEXT: $SUB_TEXT;
+$GRID_ITEM_MAIN_TEXT: $MAIN_TEXT_COLOR;
+
+// Dropdown
+$DROPDOWN_BORDER: $BOX_COLOR;
+$DROPDOWN_BACKGROUND: $WHITE;
+$DROPDOWN_FONT: $MAIN_TEXT_COLOR;

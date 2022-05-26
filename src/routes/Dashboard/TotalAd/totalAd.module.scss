@@ -1,0 +1,36 @@
+@use '/src/styles/mixins/flexbox';
+@use '/src/styles/constants/colors';
+@use '/src/styles/mixins/responsive';
+
+.totalAd {
+  margin-bottom: 50px;
+
+  @include responsive.after(SD) {
+    margin-bottom: 80px;
+  }
+
+  .title {
+    margin-bottom: 30px;
+    font-size: 26px;
+    font-weight: 500;
+  }
+
+  .mainCard {
+    margin-bottom: 30px;
+  }
+
+  .dropDownBox {
+    @include flexbox.flexbox(between, center);
+    margin-bottom: 30px;
+  }
+
+  .dropDowns {
+    @include flexbox.flexbox(start, center);
+
+    > div {
+      + div {
+        margin-left: 10px;
+      }
+    }
+  }
+}

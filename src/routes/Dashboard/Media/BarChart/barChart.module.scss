@@ -1,0 +1,26 @@
+@use '/src/styles/constants/colors';
+
+.chartContainer {
+  min-height: 300px;
+  max-height: 400px;
+  overflow-x: scroll;
+  overflow-y: hidden;
+
+  &::-webkit-scrollbar {
+    display: block;
+    height: 10px;
+    background-color: colors.$WHITE;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: colors.$SCROLL_BAR;
+    border-radius: 10px;
+  }
+}
+
+.legendContainer {
+  display: flex;
+  justify-content: flex-end;
+  max-width: 1500px;
+  margin: 20px 0 30px;
+}

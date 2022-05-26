@@ -1,0 +1,21 @@
+@use '/src/styles/mixins/responsive';
+
+.cardFlexbox {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(50%, auto));
+  gap: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+
+  @include responsive.after(MD) {
+    grid-template-columns: repeat(auto-fill, minmax(33%, auto));
+  }
+
+  @include responsive.after(HD) {
+    grid-template-columns: repeat(auto-fill, minmax(25%, auto));
+  }
+
+  @include responsive.after(SHD) {
+    grid-template-columns: repeat(auto-fill, minmax(20%, auto));
+  }
+}

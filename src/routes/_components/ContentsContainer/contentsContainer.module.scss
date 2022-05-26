@@ -1,5 +1,15 @@
+@use '/src/styles/constants/colors';
+@use '/src/styles/mixins/responsive';
+
 .container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  width: 100%;
+  min-width: 400px;
+  padding: 25px;
+  background-color: colors.$WHITE;
+  border-radius: 20px;
+  box-shadow: colors.$CONTENTS_BOX_SHADOW 0 8px 24px;
+
+  @include responsive.after(SD) {
+    padding: 40px;
+  }
 }

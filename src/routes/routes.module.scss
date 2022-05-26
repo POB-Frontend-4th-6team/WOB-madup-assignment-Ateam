@@ -1,7 +1,18 @@
 @use '/src/styles/constants/colors';
+@use '/src/styles/mixins/flexbox';
+@use '/src/styles/mixins/responsive';
+
+body {
+  background: colors.$MAIN_BG;
+}
 
 .app {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  min-height: 100vh;
+  padding-top: 60px;
+  margin-left: 0;
+  background: colors.$MAIN_BG;
+
+  @include responsive.after(SD) {
+    margin-left: 280px;
+  }
 }
