@@ -1,6 +1,16 @@
 # Madup Dashboard Assignment
+
 ## 참여 인원
-이강윤, 이지훈, 이치호, 김영만, 김학률
+☻ 김영만 [깃허브 💻 ](https://github.com/sksn12) <br/>
+
+☻ 김학률 [깃허브 💻 ](https://github.com/markyul) <br/>
+
+☻ 이강윤 [깃허브 💻 ](https://github.com/rkddbs1031) <br/>
+
+☻ 이지훈 [깃허브 💻 ](https://github.com/jihun1233) <br/>
+
+☻ 이치호 [깃허브 💻 ](https://github.com/usernamechiho) 
+
 ## 사용 라이브러리
 - `"@reduxjs/toolkit": "^1.8.1"`
 - `"@types/react-datepicker": "^4.4.1"`
@@ -24,6 +34,76 @@
 - `"victory": "^36.4.0"`
 - `"victory-core": "^36.4.0"`
 - `"web-vitals": "^2.1.0`
+
+## 폴더구조
+```
+📦routes
+ ┣ 📂AdManage
+ ┃ ┣ 📂CardList
+ ┃ ┃ ┣ 📂Card
+ ┃ ┃ ┃ ┣ 📜card.module.scss
+ ┃ ┃ ┃ ┗ 📜index.tsx
+ ┃ ┃ ┣ 📜cardList.module.scss
+ ┃ ┃ ┗ 📜index.tsx
+ ┃ ┣ 📂CardModalContents
+ ┃ ┃ ┗ 📜index.tsx
+ ┃ ┣ 📜adManage.module.scss
+ ┃ ┗ 📜index.tsx
+ ┣ 📂Dashboard
+ ┃ ┣ 📂Media
+ ┃ ┃ ┣ 📂BarChart
+ ┃ ┃ ┃ ┣ 📜ResponsiveVictoryChart.tsx
+ ┃ ┃ ┃ ┣ 📜barChart.module.scss
+ ┃ ┃ ┃ ┣ 📜chartStyle.ts
+ ┃ ┃ ┃ ┗ 📜index.tsx
+ ┃ ┃ ┣ 📂MediaTable
+ ┃ ┃ ┃ ┣ 📜index.tsx
+ ┃ ┃ ┃ ┗ 📜mediaTable.module.scss
+ ┃ ┃ ┣ 📜index.tsx
+ ┃ ┃ ┗ 📜media.module.scss
+ ┃ ┣ 📂TotalAd
+ ┃ ┃ ┣ 📂TrendGrid
+ ┃ ┃ ┃ ┣ 📂Item
+ ┃ ┃ ┃ ┃ ┣ 📜index.tsx
+ ┃ ┃ ┃ ┃ ┗ 📜item.module.scss
+ ┃ ┃ ┃ ┣ 📜index.tsx
+ ┃ ┃ ┃ ┗ 📜trendGrid.module.scss
+ ┃ ┃ ┣ 📜adChart.tsx
+ ┃ ┃ ┣ 📜getData.ts
+ ┃ ┃ ┣ 📜index.tsx
+ ┃ ┃ ┗ 📜totalAd.module.scss
+ ┃ ┣ 📜dashHeader.tsx
+ ┃ ┣ 📜dashboard.module.scss
+ ┃ ┗ 📜index.tsx
+ ┣ 📂ErrorPage
+ ┃ ┣ 📜errorPage.module.scss
+ ┃ ┗ 📜index.tsx
+ ┣ 📂_components
+ ┃ ┣ 📂ContentsContainer
+ ┃ ┃ ┣ 📜contentsContainer.module.scss
+ ┃ ┃ ┗ 📜index.tsx
+ ┃ ┣ 📂Dropdown
+ ┃ ┃ ┣ 📜dropdown.module.scss
+ ┃ ┃ ┗ 📜index.tsx
+ ┃ ┣ 📂Header
+ ┃ ┃ ┣ 📜header.module.scss
+ ┃ ┃ ┗ 📜index.tsx
+ ┃ ┣ 📂Loading
+ ┃ ┃ ┣ 📜index.tsx
+ ┃ ┃ ┗ 📜loading.module.scss
+ ┃ ┣ 📂Modal
+ ┃ ┃ ┣ 📂ModalFrame
+ ┃ ┃ ┃ ┣ 📜index.tsx
+ ┃ ┃ ┃ ┗ 📜modal.module.scss
+ ┃ ┃ ┗ 📜index.tsx
+ ┃ ┗ 📂Sidebar
+ ┃ ┃ ┣ 📜AddServiceField.tsx
+ ┃ ┃ ┣ 📜LNB.tsx
+ ┃ ┃ ┣ 📜index.tsx
+ ┃ ┃ ┗ 📜sidebar.module.scss
+ ┣ 📜index.tsx
+ ┗ 📜routes.module.scss
+```
 
 ## 기능
 ### Sidebar
@@ -77,3 +157,8 @@
 - 개발을 시작하기 전에 충분히 설계에 대해 고민하지 않아 확장성이 없는 코드를 짰다.
 - 로컬 스토리지를 이용해 광고 카드 추가 기능을 구현하려고 했지만 개발 실력이 부족해 실패했다.
 - 짧은 기한 내에 완성해야하는 과제였기 때문에 부담감이 있었고, 급하게 개발하다 여러번 삐끗했다.
+
+이지훈
+- 공용 컴포넌트인 드롭다운을 만들었는데 편의성을 고려해 좀 더 유연하게 사용할 수 있도록 만들지 못한게 아쉽다. 중간에 바꾸려고 했을 땐 이미 사용중인 곳이 많아 수정이 어려웠다.
+- 데이터 모아서 가공하는 부분이 좀 어려웠고 각 카테고리별로 가공해서 나타내는 형태도 달라서 모두 처리하는데 오래걸렸다.
+- 평소 사용하던대로 forin이나 객체의 key를 변수로 접근하려는데 타입스크립트의 타입지정때문에 안되는경우가 많았다.

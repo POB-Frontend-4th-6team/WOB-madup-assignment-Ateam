@@ -28,12 +28,9 @@
     @include flexbox.flexbox(start, center);
 
     > div {
-      + div { margin-left: 10px; }
+      + div {
+        margin-left: 10px;
+      }
     }
-  }
-
-  .mainChart {
-    width: 100%;
-    height: 50%;
   }
 }
