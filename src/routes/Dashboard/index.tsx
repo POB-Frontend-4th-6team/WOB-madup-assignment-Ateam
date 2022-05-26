@@ -15,7 +15,7 @@ const Dashboard = () => {
     return () => clearTimeout(timeout)
   })
 
-  if (isLoading) return <Loading size='100px' />
+  if (isLoading) return <Loading size='80px' />
 
   return (
     <div className={styles.container}>
