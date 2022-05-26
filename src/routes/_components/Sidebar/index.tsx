@@ -1,6 +1,5 @@
 import { useAppSelector, useAppDispatch, useCallback, useMount, useEffect, useState } from 'hooks'
 import { getSidebarDrawer, setSidebar } from 'states/sidebar'
-import { setModal } from 'states/modal'
 import store from 'store'
 
 import LNB from './LNB'
@@ -11,6 +10,7 @@ import Modal from '../Modal/ModalFrame'
 import styles from './sidebar.module.scss'
 import { cx } from 'styles'
 import { Logo, GuideIcon, Close } from 'assets/svgs/madup'
+import useToggle from 'hooks/useToggle'
 
 const DROPDOWN_ITEMS: string[] = ['매드업']
 
@@ -19,11 +19,13 @@ const Sidebar = () => {
   const sidebarDrawer = useAppSelector(getSidebarDrawer)
   const dispatch = useAppDispatch()
 
+  const [isModalOpen, , openModal, closeModal] = useToggle(false)
+
   const handleCloseSidebar = () => dispatch(setSidebar(!sidebarDrawer))
 
   const onItemChange = () => {}
 
-  const handleclick = () => dispatch(setModal(true))
+  const handleclick = () => openModal()
 
   const handleAddItem = useCallback((itemValue: string) => {
     setItems((prev) => [...prev, itemValue])
@@ -76,7 +78,7 @@ const Sidebar = () => {
           </p>
         </div>
       </aside>
-      <Modal width='400px' height='250px' text='서비스 추가하기'>
+      <Modal isOpen={isModalOpen} onClose={closeModal} width='400px' height='250px' text='서비스 추가하기'>
         <AddServiceField handleAddItem={handleAddItem} />
       </Modal>
     </>

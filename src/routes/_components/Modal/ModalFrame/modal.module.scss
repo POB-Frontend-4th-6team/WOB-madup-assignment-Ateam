@@ -6,7 +6,7 @@
   @include position.middleBox;
   z-index: 15;
   width: 100%;
-  height: 100%;
+  height: 1000%;
   background: rgba(colors.$BLACK, 10%);
   backdrop-filter: blur(5px);
 }

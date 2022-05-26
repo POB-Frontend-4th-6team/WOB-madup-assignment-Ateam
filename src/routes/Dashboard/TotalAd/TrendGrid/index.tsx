@@ -6,7 +6,6 @@ import { getStartDate } from 'states/startDate'
 import { getEndDate } from 'states/endDate'
 import formatNumber from 'utils/format'
 
-import Loading from 'routes/_components/Loading'
 import styles from './trendGrid.module.scss'
 import Item from './Item'
 
@@ -22,6 +21,7 @@ const ITEMS_INIT = [
   { key: 'conv', name: '전환 수', value: '', isIncreased: true, diff: '' },
   { key: 'sales', name: '매출', value: '', isIncreased: true, diff: '' },
 ]
+
 const TrendGrid = (): JSX.Element => {
   const startDate = useAppSelector(getStartDate)
   const endDate = useAppSelector(getEndDate)
