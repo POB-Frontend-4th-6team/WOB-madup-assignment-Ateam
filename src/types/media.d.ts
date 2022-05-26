@@ -10,3 +10,8 @@ export interface IMediaLabel {
   krName: string
   color: string
 }
+
+export interface IMediaInfo {
+  mediaLabelList: IMediaLabel[]
+  TimeList: string[]
+}

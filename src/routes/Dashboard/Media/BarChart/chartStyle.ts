@@ -1,16 +1,18 @@
 const CHART_STYLE = {
   bar: {
     style: {
-      data: { stroke: '#FFFFFF', strokeWidth: 1 },
+      data: { stroke: '#ffffff', strokeWidth: 1 },
     },
     barWidth: 40,
     x: 'category',
     y: 'perValue',
   },
   tick: {
-    style: {
-      tickLabels: { fontSize: 12, fill: '#94a2ad' },
-    },
+    tickLabels: { fontSize: 12, fill: '#94a2ad' },
+  },
+  stroke: {
+    stroke: '#edeff1',
+    strokeWidth: 1,
   },
 }
 

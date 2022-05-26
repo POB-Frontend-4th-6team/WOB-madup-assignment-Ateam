@@ -4,10 +4,10 @@ import CHANNEL_DATA from 'assets/jsons/wanted_FE-media-channel-data-set.json'
 import { IMediaChart } from 'types/media'
 import { getSales, getConv } from 'utils/math'
 
-const dateRange = ['2022-02-01', '2022-02-02', '2022-02-03', '2022-02-04', '2022-02-05']
+// const dateRange = ['2022-02-01', '2022-02-02', '2022-02-03', '2022-02-04', '2022-02-05']
 const mediaNames = ['google', 'facebook', 'naver', 'kakao']
 
-export const getMediaChartData = () => {
+export const getMediaChartData = (TimeList: string[]) => {
   const dataInit = [
     { value: 0, perValue: 0, category: '광고비' },
     { value: 0, perValue: 0, category: '매출' },
@@ -29,7 +29,7 @@ export const getMediaChartData = () => {
 
   const totalData = cloneDeep(dataInit)
 
-  const rangeData = CHANNEL_DATA.filter((item) => dateRange.includes(item.date))
+  const rangeData = CHANNEL_DATA.filter((item) => TimeList.includes(item.date))
 
   rangeData.forEach((d) => {
     mediaData[d.channel].find((item) => item.category === '광고비')!.value += d.cost
@@ -54,7 +54,7 @@ export const getMediaChartData = () => {
   return { mediaData }
 }
 
-export const getMediaTableData = () => {
+export const getMediaTableData = (TimeList: string[]) => {
   const dataInit = [
     { value: 0, category: '광고비' },
     { value: 0, category: '매출' },
@@ -77,7 +77,7 @@ export const getMediaTableData = () => {
 
   const totalData = cloneDeep(dataInit)
 
-  const rangeData = CHANNEL_DATA.filter((item) => dateRange.includes(item.date))
+  const rangeData = CHANNEL_DATA.filter((item) => TimeList.includes(item.date))
 
   rangeData.forEach((d) => {
     mediaData[d.channel].find((item) => item.category === '광고비')!.value += d.cost
