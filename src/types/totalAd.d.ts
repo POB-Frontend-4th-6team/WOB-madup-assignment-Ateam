@@ -1,6 +1,6 @@
 export interface dataType {
-  x: number
-  y: number | undefined
+  x: number | string
+  y: number
 }
 
 export interface selectedType {

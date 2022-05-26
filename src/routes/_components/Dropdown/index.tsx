@@ -1,14 +1,10 @@
 import { MouseEvent, ReactNode, useEffect, useRef, useState } from 'react'
-import { DropdownIcon } from 'assets/svgs'
+import { DropdownIcon } from 'assets/svgs/madup'
 import { cx } from 'styles'
 import { useClickAway } from 'react-use'
 import useToggle from 'hooks/useToggle'
 import styles from './dropdown.module.scss'
 
-/** TODO:
- *   border 추가
- *  marker 색 추가
- */
 interface IMarkColors {
   [item: string]: string
 }
@@ -66,7 +62,11 @@ const Dropdown = ({ children, items, onItemChange, size = 'normal', unbordered =
             <p>{item}</p>
           </li>
         ))}
-        {children && <li role='row'>{children}</li>}
+        {children && (
+          <li role='row' className={styles.addService}>
+            {children}
+          </li>
+        )}
       </ul>
     </div>
   )

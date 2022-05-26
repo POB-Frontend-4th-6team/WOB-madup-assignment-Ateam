@@ -7,7 +7,7 @@ body {
 }
 
 .app {
-  height: 100vh;
+  min-height: 100vh;
   padding-top: 60px;
   margin-left: 0;
   background: colors.$MAIN_BG;

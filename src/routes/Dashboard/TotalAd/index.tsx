@@ -1,10 +1,13 @@
-import { useAppSelector } from 'hooks'
 import { useState, useCallback } from 'react'
+
+import { useAppSelector } from 'hooks'
 import ContentsContainer from 'routes/_components/ContentsContainer'
-import Dropdown from 'routes/_components/Dropdown'
-import { getTimeListFormat } from 'states/time'
-import AdChart from './adChart'
 import styles from './totalAd.module.scss'
+import { getTimeListFormat } from 'states/time'
+
+import AdChart from './AdChart/adChart'
+import TrendGrid from './TrendGrid'
+import Dropdown from 'routes/_components/Dropdown'
 
 const defaultArr = ['매드업', 'ROAS', '광고비', '노출 수', '클릭 수', '전환 수', '매출']
 const MARK_COLORS = {
@@ -45,30 +48,27 @@ const TotalAd = () => {
 
   const onDayOrWeek = useCallback(
     (e: string) => {
-      if (timeList.length < 14 && e === '주간') alert('14일 이상 선택하세요!')
+      if (timeList.length < 14 && e === '주간') alert('14일 이상 선택하시오!')
       else setDayOrWeek(e)
     },
     [timeList]
   )
 
   return (
-    <section>
-      <div className={styles.titleBox}>
-        <p className={styles.title}>통합 광고 현황</p>
-      </div>
+    <section className={styles.totalAd}>
+      <h2 className={styles.title}>통합 광고 현황</h2>
       <ContentsContainer>
-        <div className={styles.mainContainer}>
-          <div className={styles.mainCard} />
-          <div className={styles.dropDownBox}>
-            <div className={styles.dropDownLines}>
-              <Dropdown items={DropDownList} onItemChange={onClick1} markColors={MARK_COLORS} />
-              <Dropdown items={DropDownList2} onItemChange={onClick2} markColors={MARK_COLORS} />
-            </div>
-            <Dropdown items={['일간', '주간']} onItemChange={onDayOrWeek} size='normal' />
-          </div>
-
-          <AdChart Selected={Selected} Selected2={Selected2} val={val} dayOrWeek={dayOrWeek} />
+        <div className={styles.mainCard}>
+          <TrendGrid />
         </div>
+        <div className={styles.dropDownBox}>
+          <div className={styles.dropDowns}>
+            <Dropdown items={DropDownList} onItemChange={onClick1} markColors={MARK_COLORS} />
+            <Dropdown items={DropDownList2} onItemChange={onClick2} markColors={MARK_COLORS} />
+          </div>
+          <Dropdown items={['일간', '주간']} onItemChange={onDayOrWeek} size='normal' />
+        </div>
+        <AdChart Selected={Selected} Selected2={Selected2} val={val} dayOrWeek={dayOrWeek} />
       </ContentsContainer>
     </section>
   )
